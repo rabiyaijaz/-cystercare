@@ -205,4 +205,8 @@ server.on('error', (err) => {
   }
 });
 
-startServer(PORT);
+if (!process.env.VERCEL) {
+  startServer(PORT);
+}
+
+export default server;
