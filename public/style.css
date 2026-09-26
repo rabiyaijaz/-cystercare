@@ -461,29 +461,38 @@ body {
 
 .welcome-bottom-action {
   display: flex;
-  justify-content: center;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-dark-pill {
   width: 100%;
-  /* max-width: 270px; */
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
   background: #1C1924;
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
-  padding: 15px 24px;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  margin: 0 auto;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-dark-pill:hover {
   background: #2D2738;
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
+}
+
+.btn-dark-pill:active {
+  transform: scale(0.99);
 }
 
 /* Onboarding Common */
@@ -633,8 +642,9 @@ body {
   margin-top: auto;
   padding-top: 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* PCOS/PMOS Types */
@@ -857,13 +867,13 @@ body {
 
 .btn-social-outline {
   width: 100%;
-  /* max-width: 290px; */
-  margin: 0 auto;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
   background: #FFFFFF;
   border: 1.5px solid #1C1924;
   border-radius: var(--radius-full);
-  padding: 13px 20px;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 600;
   color: #1C1924;
   display: flex;
@@ -871,7 +881,7 @@ body {
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .columning {
@@ -881,6 +891,13 @@ body {
 
 .btn-social-outline:hover {
   background: #F8F5FF;
+  border-color: var(--primary-purple);
+  color: var(--primary-purple);
+  transform: translateY(-1px);
+}
+
+.btn-social-outline:active {
+  transform: scale(0.99);
 }
 
 /* Auth Email & Password Screens */
@@ -1539,14 +1556,30 @@ body {
 
 .btn-open-symptoms-outline {
   width: 100%;
+  height: 48px;
+  min-height: 48px;
+  box-sizing: border-box;
   background: #FFFFFF;
   border: 1.5px solid var(--primary-purple);
   color: var(--primary-purple);
   border-radius: var(--radius-full);
-  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 14px;
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-open-symptoms-outline:hover {
+  background: var(--primary-purple-light);
+  transform: translateY(-1px);
+}
+
+.btn-open-symptoms-outline:active {
+  transform: scale(0.99);
 }
 
 .chat-embedded-stats-widget {
@@ -1867,14 +1900,31 @@ body {
 
 .btn-checkin-start {
   width: 100%;
+  height: 48px;
+  min-height: 48px;
+  box-sizing: border-box;
   background: #FFFFFF;
   color: var(--primary-purple);
   border: none;
   border-radius: var(--radius-full);
-  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 14.5px;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-checkin-start:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.btn-checkin-start:active {
+  transform: scale(0.99);
 }
 
 .section-container {
@@ -2953,17 +3003,19 @@ body {
   background: #F8F5FE;
   color: var(--primary-purple);
   border: 1.5px solid #D8C7FA;
-  border-radius: 999px;
-  padding: 11px 18px;
+  border-radius: var(--radius-full);
+  height: 52px;
+  min-height: 52px;
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  transition: all 0.2s ease;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-add-health-results:hover {
@@ -2974,43 +3026,39 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-add-health-results:active {
+  transform: scale(0.99);
+}
+
 /* Action Buttons Group - Unified Widths & Clearance */
 .action-buttons-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 12px;
   margin-top: 8px;
   margin-bottom: 40px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .action-buttons-group .btn-primary-purple,
 .action-buttons-group .btn-outline-purple {
   width: 100%;
-  max-width: 320px;
-  height: 48px;
-  padding: 0 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14.5px;
-  font-weight: 700;
-  border-radius: 999px;
+  height: 52px;
+  min-height: 52px;
   box-sizing: border-box;
-  margin: 0 auto;
 }
 
 .btn-primary-purple {
   width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
   background: var(--primary-purple);
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
-  padding: 14px 24px;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -3018,7 +3066,7 @@ body {
   justify-content: center;
   gap: 8px;
   box-shadow: 0 4px 14px rgba(112, 71, 235, 0.28);
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary-purple:hover {
@@ -3027,28 +3075,37 @@ body {
   box-shadow: 0 6px 18px rgba(112, 71, 235, 0.35);
 }
 
+.btn-primary-purple:active {
+  transform: scale(0.99);
+  box-shadow: 0 2px 8px rgba(112, 71, 235, 0.25);
+}
+
 .btn-outline-purple {
   width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
   background: #FFFFFF;
   color: var(--primary-purple);
   border: 1.5px solid var(--primary-purple);
   border-radius: var(--radius-full);
-  padding: 13px 24px;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-outline-purple:hover {
   background: var(--primary-purple-light);
   transform: translateY(-1px);
+}
+
+.btn-outline-purple:active {
+  transform: scale(0.99);
 }
 
 /* ================= 8. SYMPTOMS VIEW ================= */
@@ -3378,11 +3435,22 @@ body {
   background: #7047EB;
   color: #FFFFFF;
   border: none;
-  padding: 8px 16px;
+  padding: 9px 18px;
   border-radius: var(--radius-full);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 12.5px;
+  font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(112, 71, 235, 0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-sample-lab:hover {
+  background: #5B32D6;
+  transform: translateY(-1px);
+}
+
+.btn-sample-lab:active {
+  transform: scale(0.99);
 }
 
 .table-notice {
@@ -3436,37 +3504,81 @@ body {
 }
 
 .modal-footer {
-  padding: 14px 20px;
+  padding: 16px 20px;
+  background: #FAFAFA;
   border-top: 1px solid var(--card-border);
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-cancel {
   flex: 1;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #F3EFF9;
   border: none;
   border-radius: var(--radius-full);
-  padding: 12px 0;
-  font-weight: 600;
+  font-size: 14.5px;
+  font-weight: 700;
   color: var(--text-body);
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: #E8E2F2;
+}
+
+.btn-cancel:active {
+  transform: scale(0.99);
 }
 
 .btn-confirm-lab {
   flex: 2;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--primary-purple);
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
-  padding: 12px 0;
+  font-size: 14.5px;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 4px 14px rgba(112, 71, 235, 0.28);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-confirm-lab:hover:not(:disabled) {
+  background: var(--primary-purple-hover);
+  transform: translateY(-1px);
+}
+
+.btn-confirm-lab:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .btn-confirm-lab:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  box-shadow: none;
+}
+
+.modal-footer .btn-primary-purple {
+  flex: 2;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 /* ================= 11. FIND SPECIALISTS ================= */
@@ -3671,39 +3783,60 @@ body {
 
 .btn-spec-inperson {
   flex: 1;
+  height: 46px;
+  min-height: 46px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1.5px solid #1C1924;
   background: #FFFFFF;
   color: #1C1924;
   border-radius: var(--radius-full);
-  padding: 10px 0;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
 }
 
 .btn-spec-inperson:hover {
   background: #1C1924;
   color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-spec-inperson:active {
+  transform: scale(0.99);
 }
 
 .btn-spec-online {
   flex: 1;
+  height: 46px;
+  min-height: 46px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: #7047EB;
   color: #FFFFFF;
   border-radius: var(--radius-full);
-  padding: 10px 0;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
+  box-shadow: 0 3px 10px rgba(112, 71, 235, 0.24);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
 }
 
 .btn-spec-online:hover {
   background: #5B32D6;
+  transform: translateY(-1px);
+}
+
+.btn-spec-online:active {
+  transform: scale(0.99);
 }
 
 /* ================= 12. COMMUNITY ================= */
@@ -4482,19 +4615,22 @@ body {
 
 .btn-prof-primary-det {
   width: 100%;
-  padding: 10px;
+  height: 48px;
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 0 16px;
   background: #1C1924;
   color: #FFFFFF;
   border: none;
   border-radius: var(--radius-full);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  transition: all 0.2s;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-prof-primary-det:hover {
@@ -4502,28 +4638,44 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-prof-primary-det:active {
+  transform: scale(0.99);
+}
+
 .prof-det-btn-row {
   display: flex;
   gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-prof-secondary-det {
   flex: 1;
-  padding: 8px;
+  height: 44px;
+  min-height: 44px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #FFFFFF;
   color: #4C2FB7;
   border: 1.5px solid #E3D9F8;
   border-radius: var(--radius-full);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
   text-align: center;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-prof-secondary-det:hover {
   background: #F3EEFD;
   border-color: #7047EB;
+  transform: translateY(-1px);
+}
+
+.btn-prof-secondary-det:active {
+  transform: scale(0.99);
 }
 
 /* --- Care Team Section --- */
@@ -4664,20 +4816,31 @@ body {
 
 .btn-logout-pill {
   width: 100%;
-  padding: 12px;
+  height: 52px;
+  min-height: 52px;
+  box-sizing: border-box;
   background: #FFF1F2;
-  border: 1px solid #FECDD3;
+  border: 1.5px solid #FECDD3;
   color: #E11D48;
   border-radius: var(--radius-full);
-  font-size: 13px;
+  font-size: 14.5px;
   font-weight: 700;
   cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.2s;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-logout-pill:hover {
   background: #FFE4E6;
+  border-color: #FDA4AF;
+  transform: translateY(-1px);
+}
+
+.btn-logout-pill:active {
+  transform: scale(0.99);
 }
 
 /* --- Vitals Quick-Editor Modal --- */
