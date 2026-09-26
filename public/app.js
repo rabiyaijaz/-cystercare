@@ -1068,13 +1068,26 @@ function simulateVoiceInput() {
 
 // ================= DETECTION SCREEN & ENGINE (Layer 2) =================
 function setupDetectionHandlers() {
+  const toggleExplainBtn = document.getElementById('toggleExplainBtn');
+  const explainDrawerContent = document.getElementById('explainDrawerContent');
+  if (toggleExplainBtn && explainDrawerContent) {
+    toggleExplainBtn.addEventListener('click', () => {
+      const isOpen = explainDrawerContent.classList.toggle('open');
+      toggleExplainBtn.classList.toggle('active', isOpen);
+    });
+  }
+
   document.getElementById('explainEvidenceBtn')?.addEventListener('click', () => {
     const drawer = document.getElementById('explainabilityDrawer');
-    drawer.classList.toggle('open');
+    drawer?.classList.toggle('open');
   });
 
   document.getElementById('closeExplainDrawerBtn')?.addEventListener('click', () => {
-    document.getElementById('explainabilityDrawer').classList.remove('open');
+    document.getElementById('explainabilityDrawer')?.classList.remove('open');
+  });
+
+  document.getElementById('openLabUploadBtn')?.addEventListener('click', () => {
+    openLabModal();
   });
 
   // Criteria Dimension clicks open clinical explanations
