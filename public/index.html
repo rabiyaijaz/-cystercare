@@ -15,10 +15,10 @@
   <div class="device-wrapper" id="deviceWrapper">
     <!-- Device Frame Top Bar (Controls for Prototype) -->
     <header class="prototype-bar">
-      <!-- <div class="prototype-title">
-        <span class="brand-sparkle">✦</span> <span class="brand-name">CysterCare</span>
-        <span class="badge-tag">PCOS/PMOS</span>
-      </div> -->
+      <div class="prototype-brand">
+        <img src="main-logo.png" alt="CysterCare Logo" class="prototype-brand-logo">
+        <span class="prototype-brand-tag">PCOS/PMOS</span>
+      </div>
       <div class="prototype-controls">
         <select class="screen-selector" id="prototypeScreenSelect" title="Jump to Screen">
           <option value="screen-splash">✨ 1. Splash Screen</option>
@@ -79,20 +79,8 @@
         <!-- ================= 1. SPLASH SCREEN (Welcome.pdf) ================= -->
         <section class="screen-view active splash-theme" id="screen-splash">
           <div class="splash-center-content" id="splashTouchTarget">
-            <!-- <div class="cyster-brand-logo-large">
-              <svg class="starburst star-top" viewBox="0 0 24 24" width="34" height="34">
-                <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
-              </svg>
-              <div class="logo-text-bubble">
-                <div class="logo-line">CYSTER</div>
-                <div class="logo-line">CARE</div>
-              </div>
-              <svg class="starburst star-bottom" viewBox="0 0 24 24" width="30" height="30">
-                <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
-              </svg>
-            </div> -->
-            <div>
-              <img src="../main-logo.png" alt="CysterCare Splash Illustration" class="splash-illuds">
+            <div class="splash-logo-container">
+              <img src="main-logo.png" alt="CysterCare Logo" class="splash-main-logo">
             </div>
             <p class="splash-tap-hint">Tap anywhere to start</p>
           </div>
@@ -102,18 +90,7 @@
         <section class="screen-view splash-theme" id="screen-welcome">
           <div class="welcome-screen-inner">
             <div class="welcome-top-logo">
-              <div class="cyster-brand-logo-large">
-                <svg class="starburst star-top" viewBox="0 0 24 24" width="30" height="30">
-                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
-                </svg>
-                <div class="logo-text-bubble">
-                  <div class="logo-line">CYSTER</div>
-                  <div class="logo-line">CARE</div>
-                </div>
-                <svg class="starburst star-bottom" viewBox="0 0 24 24" width="26" height="26">
-                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
-                </svg>
-              </div>
+              <img src="main-logo.png" alt="CysterCare Logo" class="welcome-main-logo">
             </div>
 
             <div class="welcome-message-block">
@@ -131,6 +108,9 @@
         <section class="screen-view onboarding-step-view" id="screen-onboarding-1">
           <div class="onboarding-top-bar">
             <button class="nav-back-btn" id="btnBackToWelcome" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="onboarding-top-logo-wrap">
+              <img src="main-logo.png" alt="CysterCare" class="onboarding-nav-logo">
+            </div>
             <button class="btn-skip-text" id="btnSkipOnboarding1">Skip</button>
           </div>
 
@@ -199,6 +179,9 @@
         <section class="screen-view onboarding-step-view" id="screen-onboarding-2">
           <div class="onboarding-top-bar">
             <button class="nav-back-btn" id="btnBackToOnb1" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="onboarding-top-logo-wrap">
+              <img src="main-logo.png" alt="CysterCare" class="onboarding-nav-logo">
+            </div>
             <button class="btn-skip-text" id="btnSkipOnboarding2">Skip</button>
           </div>
 
@@ -257,6 +240,9 @@
         <section class="screen-view onboarding-step-view" id="screen-onboarding-3">
           <div class="onboarding-top-bar">
             <button class="nav-back-btn" id="btnBackToOnb2" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="onboarding-top-logo-wrap">
+              <img src="main-logo.png" alt="CysterCare" class="onboarding-nav-logo">
+            </div>
             <button class="btn-skip-text" id="btnSkipOnboarding3">Skip</button>
           </div>
 
@@ -328,18 +314,7 @@
 
           <div class="onboarding-content-body auth-choice-content">
             <div class="auth-top-logo">
-              <div class="cyster-brand-logo-large">
-                <svg class="starburst star-top" viewBox="0 0 24 24" width="28" height="28">
-                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
-                </svg>
-                <div class="logo-text-bubble">
-                  <div class="logo-line">CYSTER</div>
-                  <div class="logo-line">CARE</div>
-                </div>
-                <svg class="starburst star-bottom" viewBox="0 0 24 24" width="24" height="24">
-                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
-                </svg>
-              </div>
+              <img src="main-logo.png" alt="CysterCare Logo" class="auth-main-logo">
             </div>
 
             <div class="auth-titles-block">
@@ -655,10 +630,8 @@
         <section class="screen-view" id="view-home">
           <!-- Top App Bar -->
           <div class="app-header">
-            <div class="cyster-logo-badge">
-              <span class="sparkle top-right">✦</span>
-              <span class="sparkle bottom-left">✦</span>
-              CYSTER<br>CARE
+            <div class="app-brand-badge-wrap" id="homeBrandLogoBtn" title="CysterCare">
+              <img src="main-logo.png" alt="CysterCare Logo" class="app-header-logo">
             </div>
             <div class="header-actions">
               <button class="icon-btn" id="headerNotifBtn" aria-label="Notifications">
@@ -843,12 +816,7 @@
           <div class="chat-header">
             <button class="nav-back-btn" id="chatBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
             <div class="chat-avatar-wrapper">
-              <div class="cyster-mini-avatar">
-                <div class="bot-face">
-                  <div class="bot-eye left"></div>
-                  <div class="bot-eye right"></div>
-                </div>
-              </div>
+              <img src="main-logo.png" alt="CysterCare" class="chat-avatar-logo">
             </div>
             <div class="chat-header-text">
               <h3 id="chatHeaderTitle">CysterCare AI</h3>
@@ -1178,7 +1146,9 @@
             <div class="header-title-box">
               <h3>Find Specialists</h3>
             </div>
-            <div style="width: 36px;"></div>
+            <div class="header-corner-brand">
+              <img src="main-logo.png" alt="CysterCare" class="header-corner-logo">
+            </div>
           </div>
 
           <div class="screen-scrollable-body" style="padding-top: 10px;">
@@ -1398,7 +1368,9 @@
             <div class="header-title-box">
               <h3>Community</h3>
             </div>
-            <div style="width: 36px;"></div>
+            <div class="header-corner-brand">
+              <img src="main-logo.png" alt="CysterCare" class="header-corner-logo">
+            </div>
           </div>
 
           <!-- Segmented Pill Control (Feed vs Research) -->
@@ -1741,7 +1713,7 @@
               <h3 class="prof-name"><span id="profUserName">Sarah Jenkins</span> ✨</h3>
               <p class="prof-demographics"><span id="profUserAge">26</span> years old • Female • Blood Group: O+</p>
               <div class="prof-email" id="profUserEmail">sarah.jenkins@gmail.com</div>
-              <div class="profile-membership-badge">🌸 CysterCare Member • Active Care Plan</div>
+              <div class="profile-membership-badge"><img src="main-logo.png" alt="CysterCare" class="badge-mini-logo"> CysterCare Member • Active Care Plan</div>
             </div>
 
             <!-- Vitals & Physical Metrics Grid -->
