@@ -79,6 +79,12 @@ const extractedTableWrapper = document.getElementById('extractedTableWrapper');
 const usExtractedWrapper = document.getElementById('usExtractedWrapper');
 const btnConfirmLabResults = document.getElementById('btnConfirmLabResults');
 
+// Keep the modal backdrop scoped to the phone frame instead of the page canvas.
+const phoneFrame = document.querySelector('.iphone-frame');
+if (labModal && phoneFrame) {
+  phoneFrame.append(labModal);
+}
+
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', async () => {
   setupNavigation();
@@ -824,10 +830,10 @@ function setupPrototypeControls() {
     state.isDeviceFrame = !state.isDeviceFrame;
     if (state.isDeviceFrame) {
       wrapper.classList.remove('full-view');
-      toggleBtn.textContent = '📱 Frame Mode';
+      toggleBtn.textContent = 'Frame Mode';
     } else {
       wrapper.classList.add('full-view');
-      toggleBtn.textContent = '🖥️ Expanded View';
+      toggleBtn.textContent = 'Expanded View';
     }
   });
 
