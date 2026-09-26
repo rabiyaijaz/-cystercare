@@ -1,0 +1,20 @@
+{
+  "name": "cystercare-ai-platform",
+  "version": "1.0.0",
+  "description": "CysterCare AI Health Assistant and Clinical PCOS Detection Engine",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/runTests.js"
+  },
+  "keywords": [
+    "pcos",
+    "healthcare",
+    "ai-assistant",
+    "rotterdam-criteria",
+    "womens-health"
+  ],
+  "author": "CysterCare Team",
+  "license": "ISC"
+}

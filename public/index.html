@@ -1,0 +1,2601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CysterCare — AI Health Assistant & PCOS/PMOS Detection Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Container & Device Wrapper -->
+  <div class="device-wrapper" id="deviceWrapper">
+    <!-- Device Frame Top Bar (Controls for Prototype) -->
+    <header class="prototype-bar">
+      <div class="prototype-title">
+        <span class="brand-sparkle">✦</span> <span class="brand-name">CysterCare</span>
+        <span class="badge-tag">PCOS/PMOS</span>
+      </div>
+      <div class="prototype-controls">
+        <select class="screen-selector" id="prototypeScreenSelect" title="Jump to Screen">
+          <option value="screen-splash">✨ 1. Splash Screen</option>
+          <option value="screen-welcome">💜 2. Welcome Screen</option>
+          <option value="screen-onboarding-1">❓ 3. What is PCOS/PMOS?</option>
+          <option value="screen-onboarding-2">🧬 4. Types & Personalization</option>
+          <option value="screen-onboarding-3">🌸 5. What CysterCare Does</option>
+          <option value="screen-auth-choice">🔑 6. Let's Get Started (Auth)</option>
+          <option value="screen-auth-email">✉️ 7. Enter Email</option>
+          <option value="screen-auth-password">🛡️ 8. Create Account</option>
+          <option value="screen-personalize-name-dob">🎂 9. Name & Date of Birth</option>
+          <option value="screen-personalize-body">⚖️ 10. Height & Weight (BMI)</option>
+          <option value="view-home">🏠 11. Main Home Screen</option>
+          <option value="view-chat">🤖 12. Main AI Chat</option>
+          <option value="view-specialists">🩺 13. Specialists</option>
+          <option value="view-community">👥 14. Community</option>
+          <option value="view-research-detail">📖 15. Research Detail</option>
+          <option value="view-symptoms">📝 16. Symptom Check-in</option>
+          <option value="view-profile">👤 17. User Profile</option>
+          <option value="view-detection">🔬 18. Detection Report</option>
+          <option value="view-doctor-prep">📊 19. Doctor Stats</option>
+        </select>
+        <button class="btn-toggle-frame" id="toggleFrameBtn" title="Toggle Mobile Frame View">📱 Frame</button>
+      </div>
+    </header>
+
+    <!-- Mobile Device (iPhone 16 Pro Style) -->
+    <main class="iphone-frame purple-theme" id="iphoneFrame">
+      
+      <!-- iOS Status Bar -->
+      <div class="ios-status-bar white-mode splash-mode" id="iosStatusBar">
+        <span class="ios-time">9:41</span>
+        <div class="dynamic-island">
+          <div class="island-camera"></div>
+          <div class="island-sensor"></div>
+        </div>
+        <div class="ios-icons">
+          <svg class="icon-signal" viewBox="0 0 18 12" width="16" height="11">
+            <rect x="0" y="8" width="3" height="4" rx="0.5" fill="currentColor"/>
+            <rect x="4.5" y="6" width="3" height="6" rx="0.5" fill="currentColor"/>
+            <rect x="9" y="3" width="3" height="9" rx="0.5" fill="currentColor"/>
+            <rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="currentColor"/>
+          </svg>
+          <svg class="icon-wifi" viewBox="0 0 16 12" width="15" height="11">
+            <path d="M8 9.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" fill="currentColor"/>
+            <path d="M4.5 7.5a5 5 0 0 1 7 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <path d="M1.5 4.5a9.5 9.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="battery-pill">
+            <div class="battery-level"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App Viewport (Scrollable Screen Content) -->
+      <div class="app-viewport" id="appViewport">
+
+        <!-- ================= 1. SPLASH SCREEN (Welcome.pdf) ================= -->
+        <section class="screen-view active splash-theme" id="screen-splash">
+          <div class="splash-center-content" id="splashTouchTarget">
+            <div class="cyster-brand-logo-large">
+              <svg class="starburst star-top" viewBox="0 0 24 24" width="34" height="34">
+                <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
+              </svg>
+              <div class="logo-text-bubble">
+                <div class="logo-line">CYSTER</div>
+                <div class="logo-line">CARE</div>
+              </div>
+              <svg class="starburst star-bottom" viewBox="0 0 24 24" width="30" height="30">
+                <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
+              </svg>
+            </div>
+            <p class="splash-tap-hint">Tap anywhere to start</p>
+          </div>
+        </section>
+
+        <!-- ================= 2. WELCOME SCREEN (Welcome-1.pdf) ================= -->
+        <section class="screen-view splash-theme" id="screen-welcome">
+          <div class="welcome-screen-inner">
+            <div class="welcome-top-logo">
+              <div class="cyster-brand-logo-large">
+                <svg class="starburst star-top" viewBox="0 0 24 24" width="30" height="30">
+                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
+                </svg>
+                <div class="logo-text-bubble">
+                  <div class="logo-line">CYSTER</div>
+                  <div class="logo-line">CARE</div>
+                </div>
+                <svg class="starburst star-bottom" viewBox="0 0 24 24" width="26" height="26">
+                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="welcome-message-block">
+              <h2 class="welcome-title-large">Welcome To<br><strong>CysterCare</strong></h2>
+              <p class="welcome-sub-text">CysterCare helps you manage your <strong>PCOS/PMOS</strong> with personalized guidance.</p>
+            </div>
+
+            <div class="welcome-bottom-action">
+              <button class="btn-dark-pill" id="btnWelcomeGetStarted">Get Started</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 3. ONBOARDING: WHAT IS PCOS/PMOS? ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-onboarding-1">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToWelcome" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="btn-skip-text" id="btnSkipOnboarding1">Skip</button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <h2 class="onboarding-main-title">What is <span class="text-purple-highlight">PCOS/PMOS</span>?</h2>
+            <p class="onboarding-desc-text">
+              Polycystic Ovary Syndrome (PCOS) and Polycystic Ovarian Morphology Spectrum (PMOS) are conditions that affect multiple body systems. Understanding them is the first step to managing them.
+            </p>
+
+            <!-- 2x2 Grid Categories -->
+            <div class="onboarding-2x2-grid">
+              <div class="onb-category-card">
+                <div class="onb-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  </svg>
+                </div>
+                <strong class="onb-card-title text-purple-highlight">Hormones</strong>
+                <p class="onb-card-sub">Hormonal imbalances</p>
+              </div>
+
+              <div class="onb-category-card">
+                <div class="onb-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="5" r="2"></circle>
+                    <path d="M12 7v6l3 2"></path>
+                    <path d="M6 13l3-2 3 2"></path>
+                    <path d="M9 19l3-4 3 4"></path>
+                  </svg>
+                </div>
+                <strong class="onb-card-title text-purple-highlight">Metabolism</strong>
+                <p class="onb-card-sub">Impact on weight and energy levels</p>
+              </div>
+
+              <div class="onb-category-card">
+                <div class="onb-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                  </svg>
+                </div>
+                <strong class="onb-card-title text-purple-highlight">Mental Health</strong>
+                <p class="onb-card-sub">Emotional wellbeing and mood</p>
+              </div>
+
+              <div class="onb-category-card">
+                <div class="onb-card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 12h8"></path>
+                    <path d="M12 8v8"></path>
+                  </svg>
+                </div>
+                <strong class="onb-card-title text-purple-highlight">Overall Health</strong>
+                <p class="onb-card-sub">Long-term wellness considerations</p>
+              </div>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnContinueOnb1">Continue</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 4. ONBOARDING: TYPES & PERSONALIZATION ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-onboarding-2">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToOnb1" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="btn-skip-text" id="btnSkipOnboarding2">Skip</button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <h2 class="onboarding-main-title">Why <span class="text-purple-highlight">Personalization</span> Matters?</h2>
+            <p class="onboarding-sub-header">PCOS/PMOS is not one condition</p>
+
+            <div class="pcos-types-list">
+              <div class="pcos-type-card type-insulin">
+                <div class="type-bullet-dot dot-purple"></div>
+                <div class="type-details">
+                  <h5>Insulin-resistant PCOS/PMOS</h5>
+                  <p>Related to blood sugar regulation & insulin sensitivity</p>
+                </div>
+              </div>
+
+              <div class="pcos-type-card type-inflammatory">
+                <div class="type-bullet-dot dot-pink"></div>
+                <div class="type-details">
+                  <h5>Inflammatory PCOS/PMOS</h5>
+                  <p>Linked to inflammation markers & immune pathways</p>
+                </div>
+              </div>
+
+              <div class="pcos-type-card type-adrenal">
+                <div class="type-bullet-dot dot-blue"></div>
+                <div class="type-details">
+                  <h5>Adrenal PCOS/PMOS</h5>
+                  <p>Stress hormone related (DHEAS elevation & cortisol)</p>
+                </div>
+              </div>
+
+              <div class="pcos-type-card type-postpill">
+                <div class="type-bullet-dot dot-green"></div>
+                <div class="type-details">
+                  <h5>Post-pill PCOS/PMOS</h5>
+                  <p>Following hormonal birth control discontinuation</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="onb-callout-card">
+              <div class="callout-icon-bulb">💡</div>
+              <p class="callout-text">
+                General advice doesn't work for everyone. Your care should be based on your unique data and symptoms.
+              </p>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnContinueOnb2">Continue</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 5. ONBOARDING: WHAT CYSTERCARE DOES ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-onboarding-3">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToOnb2" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="btn-skip-text" id="btnSkipOnboarding3">Skip</button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <h2 class="onboarding-main-title">What <span class="text-purple-highlight">CysterCare</span> Does</h2>
+            <p class="onboarding-sub-header">Everything you need for personalized PCOS/PMOS management in one place</p>
+
+            <div class="cyster-features-list">
+              <div class="cyster-feat-item">
+                <div class="cfi-icon">💬</div>
+                <div class="cfi-text">
+                  <h5 class="text-purple-highlight">AI Assistant</h5>
+                  <p>Chat with Cyster AI for personalized guidance</p>
+                </div>
+              </div>
+
+              <div class="cyster-feat-item">
+                <div class="cfi-icon">📈</div>
+                <div class="cfi-text">
+                  <h5 class="text-purple-highlight">Symptom & Mood Tracking</h5>
+                  <p>Daily check-ins to understand your patterns</p>
+                </div>
+              </div>
+
+              <div class="cyster-feat-item">
+                <div class="cfi-icon">📁</div>
+                <div class="cfi-text">
+                  <h5 class="text-purple-highlight">Medical Records</h5>
+                  <p>Store and organize your health data securely</p>
+                </div>
+              </div>
+
+              <div class="cyster-feat-item">
+                <div class="cfi-icon">🩺</div>
+                <div class="cfi-text">
+                  <h5 class="text-purple-highlight">Verified Doctors</h5>
+                  <p>Connect with PCOS/PMOS specialists</p>
+                </div>
+              </div>
+
+              <div class="cyster-feat-item">
+                <div class="cfi-icon">📖</div>
+                <div class="cfi-text">
+                  <h5 class="text-purple-highlight">Community & Research</h5>
+                  <p>Learn from others and stay informed</p>
+                </div>
+              </div>
+
+              <div class="cyster-feat-item">
+                <div class="cfi-icon">🔮</div>
+                <div class="cfi-text">
+                  <h5 class="text-purple-highlight">Predictive Insights</h5>
+                  <p>Anticipate needs and plan ahead</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnOnbToAuthChoice">Get Started</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 6. AUTH: LET'S GET YOU STARTED ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-auth-choice">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToOnb3" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          </div>
+
+          <div class="onboarding-content-body auth-choice-content">
+            <div class="auth-top-logo">
+              <div class="cyster-brand-logo-large">
+                <svg class="starburst star-top" viewBox="0 0 24 24" width="28" height="28">
+                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
+                </svg>
+                <div class="logo-text-bubble">
+                  <div class="logo-line">CYSTER</div>
+                  <div class="logo-line">CARE</div>
+                </div>
+                <svg class="starburst star-bottom" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="#FF94C2" d="M12 0L13.8 6.2L19 2.5L16.2 8.5L22.5 9.8L16.8 13.2L20.8 18.2L14.7 16.5L13.8 22.8L10.2 17.5L5.2 21.2L8 15.2L1.8 14L7.5 10.5L3.5 5.5L9.5 7.2Z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="auth-titles-block">
+              <h2 class="auth-main-title">Let’s get you started</h2>
+              <p class="auth-sub-title">Login or create an account to get started.</p>
+            </div>
+
+            <div class="auth-buttons-stack">
+              <button class="btn-primary-purple" id="btnContinueEmail">Continue with email</button>
+              
+              <div class="auth-divider-or"><span>Or</span></div>
+
+              <button class="btn-social-outline" id="btnContinueGoogle">
+                <svg class="social-ico" viewBox="0 0 24 24" width="20" height="20">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.14z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.36 7.33 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.15 0 9.92 0 12s.45 3.85 1.24 5.42l4.04-3.15z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                </svg>
+                Continue with Google
+              </button>
+
+              <button class="btn-social-outline" id="btnContinueApple">
+                <svg class="social-ico" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.35-.58.66-1.09 1.73-.95 2.76.99.08 2.06-.51 2.68-1.26z"/>
+                </svg>
+                Continue with Apple
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 7. AUTH: ENTER YOUR EMAIL ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-auth-email">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToAuthChoice" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <!-- 3D Pastel Envelope Illustration -->
+            <div class="auth-illus-box">
+              <svg viewBox="0 0 160 130" width="130" height="105" class="illus-3d">
+                <defs>
+                  <linearGradient id="envGradBack" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFD6E8"/>
+                    <stop offset="100%" stop-color="#E2D0FA"/>
+                  </linearGradient>
+                  <linearGradient id="envGradFlap" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFB3D6"/>
+                    <stop offset="100%" stop-color="#FFA2CD"/>
+                  </linearGradient>
+                  <linearGradient id="envGradBody" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#C5ADFA"/>
+                    <stop offset="100%" stop-color="#A78BF5"/>
+                  </linearGradient>
+                </defs>
+                <rect x="20" y="30" width="120" height="80" rx="16" fill="url(#envGradBack)" filter="drop-shadow(0 8px 16px rgba(112, 71, 235, 0.18))"/>
+                <polygon points="20,30 80,75 140,30" fill="url(#envGradFlap)"/>
+                <polygon points="20,110 80,68 140,110" fill="url(#envGradBody)" opacity="0.95"/>
+                <polygon points="20,30 65,70 20,110" fill="#B392F8" opacity="0.8"/>
+                <polygon points="140,30 95,70 140,110" fill="#B392F8" opacity="0.8"/>
+              </svg>
+            </div>
+
+            <h2 class="auth-screen-heading">Enter your email</h2>
+            <p class="auth-screen-sub">We’ll check if you already have an account</p>
+
+            <div class="auth-input-group">
+              <label class="auth-input-label">Email Address</label>
+              <div class="auth-text-field">
+                <input type="email" id="inputUserEmail" value="Sarahoseini@gmail.com" placeholder="name@example.com" />
+              </div>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnSubmitEmail">Continue</button>
+              <p class="auth-bottom-switch-link">Already have an Account? <a href="#" id="linkSwitchToLogin">Login</a></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 8. AUTH: CREATE YOUR ACCOUNT ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-auth-password">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToAuthEmail" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <!-- 3D Pastel Shield Illustration -->
+            <div class="auth-illus-box">
+              <svg viewBox="0 0 140 140" width="115" height="115" class="illus-3d">
+                <defs>
+                  <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFD6EA"/>
+                    <stop offset="50%" stop-color="#E5D2FA"/>
+                    <stop offset="100%" stop-color="#CBB5FA"/>
+                  </linearGradient>
+                </defs>
+                <path d="M70 15 C100 15, 120 28, 120 58 C120 95, 88 120, 70 128 C52 120, 20 95, 20 58 C20 28, 40 15, 70 15 Z" fill="url(#shieldGrad)" filter="drop-shadow(0 10px 20px rgba(112, 71, 235, 0.22))"/>
+                <path d="M70 28 C92 28, 106 38, 106 62 C106 90, 82 110, 70 116 C58 110, 34 90, 34 62 C34 38, 48 28, 70 28 Z" fill="#FFFFFF" opacity="0.35"/>
+                <polyline points="52,68 65,81 88,56" fill="none" stroke="#7047EB" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <h2 class="auth-screen-heading">Create your account</h2>
+            <p class="auth-screen-sub">Set a password to create your account.</p>
+
+            <div class="auth-input-group">
+              <label class="auth-input-label">Password</label>
+              <div class="auth-password-field">
+                <input type="password" id="inputUserPassword" value="password123" />
+                <span class="password-eye-btn">👁️</span>
+              </div>
+              <div class="forgot-pass-link"><a href="#">Forgot your password?</a></div>
+            </div>
+
+            <div class="auth-input-group">
+              <label class="auth-input-label">Confirm Password</label>
+              <div class="auth-password-field">
+                <input type="password" id="inputUserConfirmPassword" value="password123" />
+                <span class="password-eye-btn">👁️</span>
+              </div>
+              <div class="forgot-pass-link"><a href="#">Forgot your password?</a></div>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnSubmitPassword">Continue</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 9. PERSONALIZE: NAME & DATE OF BIRTH ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-personalize-name-dob">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToAuthPass" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="btn-skip-text" id="btnSkipDob">Skip</button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <!-- 3D Pastel Birthday Cake with Lit Candles -->
+            <div class="auth-illus-box">
+              <svg viewBox="0 0 160 130" width="130" height="105" class="illus-3d">
+                <defs>
+                  <linearGradient id="cakeGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFAED3"/>
+                    <stop offset="100%" stop-color="#F28BBB"/>
+                  </linearGradient>
+                  <linearGradient id="frostGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#FFE8F2"/>
+                    <stop offset="100%" stop-color="#FFD6EA"/>
+                  </linearGradient>
+                </defs>
+                <!-- Candles -->
+                <rect x="52" y="24" width="6" height="26" rx="2" fill="#BAE6FD"/>
+                <polygon points="55,14 52,22 58,22" fill="#FBBF24"/>
+                <rect x="77" y="20" width="6" height="30" rx="2" fill="#BAE6FD"/>
+                <polygon points="80,10 77,18 83,18" fill="#FBBF24"/>
+                <rect x="102" y="24" width="6" height="26" rx="2" fill="#BAE6FD"/>
+                <polygon points="105,14 102,22 108,22" fill="#FBBF24"/>
+                <!-- Cake Body -->
+                <rect x="30" y="50" width="100" height="54" rx="14" fill="url(#cakeGrad)" filter="drop-shadow(0 8px 18px rgba(244, 114, 182, 0.25))"/>
+                <path d="M30 58 Q 45 68 55 58 T 80 58 T 105 58 T 130 58 L 130 50 L 30 50 Z" fill="url(#frostGrad)"/>
+              </svg>
+            </div>
+
+            <!-- Name Input Field -->
+            <div class="auth-input-group mb-md">
+              <h2 class="auth-screen-heading text-left">What should we call you?</h2>
+              <p class="auth-screen-sub text-left">Let’s make this experience truly yours.</p>
+              <div class="auth-text-field">
+                <input type="text" id="inputUserName" value="Sarah" placeholder="Enter your name" />
+              </div>
+            </div>
+
+            <!-- Age Selection Card with Slider -->
+            <div class="age-selection-card">
+              <div class="age-card-header">
+                <div class="age-card-title-box">
+                  <h3 class="auth-sub-heading text-left">🎂 How old are you?</h3>
+                  <p class="auth-screen-sub text-left">Calibrates your hormonal baseline & age-adjusted risk profile.</p>
+                </div>
+                <div class="age-stepper-box">
+                  <button type="button" class="age-step-btn" id="btnAgeMinus" aria-label="Decrease age">−</button>
+                  <div class="age-number-wrap">
+                    <input type="number" id="inputUserAge" min="14" max="65" value="26" class="age-direct-input" />
+                    <span class="age-unit-tag">yrs</span>
+                  </div>
+                  <button type="button" class="age-step-btn" id="btnAgePlus" aria-label="Increase age">+</button>
+                </div>
+              </div>
+
+              <!-- Interactive Age Slider -->
+              <div class="age-slider-box">
+                <input type="range" class="mic-slider age-mic-slider" id="sliderAge" min="14" max="65" value="26" step="1" />
+                <div class="slider-ticks-row">
+                  <span>14 yrs</span>
+                  <span>25 yrs</span>
+                  <span>35 yrs</span>
+                  <span>50 yrs</span>
+                  <span>65 yrs</span>
+                </div>
+              </div>
+
+              <!-- Quick Age Bracket Pills -->
+              <div class="age-bracket-pills">
+                <button type="button" class="age-pill" data-age="18">15–19 (Teens)</button>
+                <button type="button" class="age-pill active" data-age="26">20–29 (Peak)</button>
+                <button type="button" class="age-pill" data-age="34">30–39</button>
+                <button type="button" class="age-pill" data-age="45">40+</button>
+              </div>
+
+              <!-- Estimated Birthday / Exact Date Toggle -->
+              <div class="dob-estimated-pill">
+                <div class="dob-pill-left">
+                  <span class="cal-ico">📅</span>
+                  <div class="dob-calc-text">
+                    <span class="dob-calc-label">Calculated Birth Year:</span>
+                    <strong id="displayCalculatedBirthYear">1998</strong>
+                    <span class="dob-date-sub" id="displaySelectedDob">(18.09.1998)</span>
+                  </div>
+                </div>
+                <button type="button" class="btn-toggle-exact-dob" id="btnToggleExactDob">Edit Date</button>
+              </div>
+
+              <!-- Collapsible Exact Date of Birth Picker -->
+              <div class="exact-dob-picker-wrap" id="exactDobPickerWrap" style="display: none;">
+                <label for="inputExactDob" class="exact-dob-label">Specify Exact Date of Birth:</label>
+                <input type="date" id="inputExactDob" value="1998-09-18" min="1955-01-01" max="2012-12-31" class="exact-dob-input" />
+              </div>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnContinuePersonalizeDob">Continue</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 10. PERSONALIZE: HEIGHT & WEIGHT (BMI) ================= -->
+        <section class="screen-view onboarding-step-view" id="screen-personalize-body">
+          <div class="onboarding-top-bar">
+            <button class="nav-back-btn" id="btnBackToDob" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="btn-skip-text" id="btnSkipBody">Skip</button>
+          </div>
+
+          <div class="onboarding-content-body">
+            <!-- 3D Scale & Metric Illustration -->
+            <div class="auth-illus-box">
+              <svg viewBox="0 0 160 130" width="130" height="105" class="illus-3d">
+                <defs>
+                  <linearGradient id="scaleGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#E2D4FA"/>
+                    <stop offset="100%" stop-color="#BFA5F8"/>
+                  </linearGradient>
+                </defs>
+                <rect x="25" y="25" width="110" height="85" rx="20" fill="url(#scaleGrad)" filter="drop-shadow(0 10px 20px rgba(112, 71, 235, 0.22))"/>
+                <circle cx="80" cy="55" r="24" fill="#FFFFFF"/>
+                <path d="M72 55 A8 8 0 0 1 88 55" stroke="#7047EB" stroke-width="3" fill="none"/>
+                <line x1="80" y1="55" x2="86" y2="44" stroke="#FF6B8B" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <h2 class="auth-screen-heading">What's your height & weight?</h2>
+            <p class="auth-screen-sub">This helps CysterCare calculate your BMI and personalize metabolic & cycle support.</p>
+
+            <!-- Height Card -->
+            <div class="metric-input-card">
+              <div class="mic-top-row">
+                <span class="mic-title">📏 Height</span>
+                <div class="mic-unit-toggle">
+                  <button class="unit-btn active" id="unitHeightCm">cm</button>
+                  <button class="unit-btn" id="unitHeightFt">ft</button>
+                </div>
+              </div>
+              <div class="mic-value-row">
+                <input type="number" id="inputUserHeight" value="165" min="120" max="220" />
+                <span class="mic-unit-label" id="labelHeightUnit">cm</span>
+              </div>
+              <input type="range" class="mic-slider" id="sliderHeight" min="130" max="200" value="165" />
+            </div>
+
+            <!-- Weight Card -->
+            <div class="metric-input-card">
+              <div class="mic-top-row">
+                <span class="mic-title">⚖️ Weight</span>
+                <div class="mic-unit-toggle">
+                  <button class="unit-btn active" id="unitWeightKg">kg</button>
+                  <button class="unit-btn" id="unitWeightLbs">lbs</button>
+                </div>
+              </div>
+              <div class="mic-value-row">
+                <input type="number" step="0.5" id="inputUserWeight" value="75.0" min="35" max="180" />
+                <span class="mic-unit-label" id="labelWeightUnit">kg</span>
+              </div>
+              <input type="range" class="mic-slider" id="sliderWeight" min="40" max="140" value="75" />
+            </div>
+
+            <!-- Live Calculated BMI Badge Card -->
+            <div class="bmi-live-preview-card">
+              <div class="bmi-top">
+                <span>Calculated BMI:</span>
+                <strong id="displayBmiValue">27.5</strong>
+              </div>
+              <div class="bmi-category-pill" id="displayBmiCategory">Overweight range (Common metabolic PCOS/PMOS profile)</div>
+            </div>
+
+            <div class="onboarding-bottom-button-area">
+              <button class="btn-primary-purple" id="btnFinishPersonalize">Start My Journey</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 11. MAIN VIEW 1: HOME (Cycle_Period.pdf) ================= -->
+        <section class="screen-view" id="view-home">
+          <!-- Top App Bar -->
+          <div class="app-header">
+            <div class="cyster-logo-badge">
+              <span class="sparkle top-right">✦</span>
+              <span class="sparkle bottom-left">✦</span>
+              CYSTER<br>CARE
+            </div>
+            <div class="header-actions">
+              <button class="icon-btn" id="headerNotifBtn" aria-label="Notifications">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="notif-dot"></span>
+              </button>
+              <button class="icon-btn" id="headerCalBtn" aria-label="Calendar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </button>
+              <div class="user-avatar" id="homeUserAvatarBtn" title="View Sarah's Profile" style="cursor: pointer;">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Sarah" id="homeAvatarImg" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23F3EEFD\'/><circle cx=\'50\' cy=\'40\' r=\'20\' fill=\'%237047EB\'/><path d=\'M20,85 C20,65 35,60 50,60 C65,60 80,65 80,85 Z\' fill=\'%237047EB\'/></svg>';" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Greeting -->
+          <div class="home-greeting">
+            <h2>Hi <span id="homeUserGreetingName">Sarah</span> 👋, how are you feeling today?</h2>
+          </div>
+
+          <!-- Daily Check-In Hero Card -->
+          <div class="daily-checkin-card">
+            <div class="checkin-content">
+              <div class="checkin-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="checkin-text">
+                <h3>Daily Check-in</h3>
+                <p>Take a moment to track how you're feeling today</p>
+              </div>
+            </div>
+            <button class="btn-checkin-start" id="startCheckinBtn">Start Check-in</button>
+          </div>
+
+          <!-- Today's Insights -->
+          <div class="section-container">
+            <h4 class="section-title">Today's Insights</h4>
+            <div class="insight-row">
+              <div class="insight-pill">
+                <span class="status-indicator violet"></span>
+                <div>
+                  <strong>Cycle day 14</strong>
+                  <p>You're in your ovulation phase</p>
+                </div>
+              </div>
+              <div class="insight-pill">
+                <span class="status-indicator green"></span>
+                <div>
+                  <strong>Energy levels stable</strong>
+                  <p>Your energy has been consistent for 3 days</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Predictive Insight Card -->
+          <div class="predictive-insight-card">
+            <div class="bulb-icon">💡</div>
+            <div class="predictive-text">
+              <h5>Predictive Insight</h5>
+              <p>Possible energy dip starting Tuesday. Let's adjust your meal plan with complex carbs and magnesium.</p>
+            </div>
+          </div>
+
+          <!-- Symptom Trends Card (from Cycle_Period.pdf) -->
+          <div class="trends-card">
+            <div class="trends-header">
+              <div class="trends-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7047EB" stroke-width="2">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+                <span>Symptom Trends</span>
+              </div>
+              <span class="trends-badge">+12% Improved</span>
+            </div>
+            <div class="chart-container">
+              <div class="y-axis">
+                <span>100</span>
+                <span>80</span>
+                <span>60</span>
+                <span>40</span>
+                <span>20</span>
+                <span>0</span>
+              </div>
+              <div class="bars-wrapper" id="homeCycleBars">
+                <div class="bar-col">
+                  <div class="bar-track"><div class="bar-fill" style="height: 18%;"></div></div>
+                  <span class="bar-label">1</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-track"><div class="bar-fill" style="height: 22%;"></div></div>
+                  <span class="bar-label">2</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-track"><div class="bar-fill" style="height: 32%;"></div></div>
+                  <span class="bar-label">3</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-track"><div class="bar-fill" style="height: 35%;"></div></div>
+                  <span class="bar-label">4</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-track"><div class="bar-fill" style="height: 48%;"></div></div>
+                  <span class="bar-label">5</span>
+                </div>
+                <div class="bar-col active">
+                  <div class="bar-track"><div class="bar-fill" style="height: 64%;"></div></div>
+                  <span class="bar-label">6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="section-container">
+            <h4 class="section-title">Quick Actions</h4>
+            <div class="quick-action-list">
+              <div class="quick-action-item" id="qaAiAssistant">
+                <div class="qa-icon robot">🤖</div>
+                <div class="qa-info">
+                  <strong>AI Assistant</strong>
+                  <p>Chat with Cyster AI for personalized guidance</p>
+                </div>
+                <span class="qa-arrow">›</span>
+              </div>
+              <div class="quick-action-item" id="qaLogSymptoms">
+                <div class="qa-icon symptoms">📈</div>
+                <div class="qa-info">
+                  <strong>Log Symptoms</strong>
+                  <p>Track what you're experiencing today</p>
+                </div>
+                <span class="qa-arrow">›</span>
+              </div>
+              <div class="quick-action-item" id="qaVerifiedDoctors">
+                <div class="qa-icon doctor">🩺</div>
+                <div class="qa-info">
+                  <strong>Find Specialists</strong>
+                  <p>Connect with Endocrinologists, Gyns, Derms & Dietitians</p>
+                </div>
+                <span class="qa-arrow">›</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- More Features Grid -->
+          <div class="section-container mb-xl">
+            <h4 class="section-title">More Features</h4>
+            <div class="features-grid">
+              <div class="feature-tile" id="featSpecialists">
+                <div class="feat-icon">🩺</div>
+                <span>Specialists</span>
+              </div>
+              <div class="feature-tile" id="featCommunity">
+                <div class="feat-icon">👥</div>
+                <span>Community</span>
+              </div>
+              <div class="feature-tile" id="featMedicalRecords">
+                <div class="feat-icon">📑</div>
+                <span>Records</span>
+              </div>
+              <div class="feature-tile" id="featAnalytics">
+                <div class="feat-icon">📊</div>
+                <span>Validation</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 12. MAIN VIEW 2: AI CHAT (Chat Page-1.pdf, Chat Page-2.pdf) ================= -->
+        <section class="screen-view" id="view-chat">
+          <div class="chat-header">
+            <button class="nav-back-btn" id="chatBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="chat-avatar-wrapper">
+              <div class="cyster-mini-avatar">
+                <div class="bot-face">
+                  <div class="bot-eye left"></div>
+                  <div class="bot-eye right"></div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-header-text">
+              <h3 id="chatHeaderTitle">CysterCare AI</h3>
+              <p>Your PCOS/PMOS AI Assistant</p>
+            </div>
+            <button class="btn-quick-detect-pill" id="startPcosCheckBtn" title="Launch Guided PCOS/PMOS Detection">
+              <span>✦</span> Check PCOS/PMOS
+            </button>
+          </div>
+
+          <!-- Language Accessibility Switcher (English, Urdu, Pashto) -->
+          <div class="chat-lang-switcher" id="chatLangSwitcher">
+            <button class="chat-lang-pill active" data-lang="en">🇬🇧 English</button>
+            <button class="chat-lang-pill" data-lang="ur">🇵🇰 اردو (Urdu)</button>
+            <button class="chat-lang-pill" data-lang="ps">🌸 پښتو (Pashto)</button>
+          </div>
+
+          <div class="chat-scroll-area" id="chatScrollArea">
+            <div class="chat-date-indicator">Wed, Apr 9</div>
+
+            <!-- "Your Symptoms Are All Set" Card (From Chat Page-1.pdf) -->
+            <div class="chat-card-symptoms-set" id="chatCardSymptomsSet">
+              <h5>Your Symptoms Are All Set</h5>
+              <div class="symptoms-chips-row">
+                <span class="chat-sym-tag">🩲 Cramps</span>
+                <span class="chat-sym-tag">🤕 Headache</span>
+                <span class="chat-sym-tag">🙁 Sad</span>
+              </div>
+              <button class="btn-open-symptoms-outline" id="btnChatOpenSymptoms">Open Symptoms</button>
+            </div>
+
+            <!-- Pre-populated chat thread (matching Chat Page-1.pdf & Chat Page-2.pdf) -->
+            <div class="chat-message bot">
+              <div class="message-bubble">
+                <p>Great! I'll log these so you can keep track of your body's patterns.</p>
+              </div>
+            </div>
+
+            <div class="chat-message bot">
+              <div class="message-bubble">
+                <p>Then, I'll share a few tips to help you feel better and ease the pain.</p>
+              </div>
+            </div>
+
+            <div class="chat-message user">
+              <div class="message-bubble">
+                <p>Yes, that works!</p>
+              </div>
+            </div>
+
+            <!-- Doctor Stats Query in Chat (from Chat Page-2.pdf) -->
+            <div class="chat-message user">
+              <div class="message-bubble">
+                <p>Send my stats to Dr. Afshin Shareef</p>
+              </div>
+            </div>
+
+            <div class="chat-message bot">
+              <div class="message-bubble">
+                <p>Your body's notes from 6 months, Pick what to send to your doctor.</p>
+              </div>
+            </div>
+
+            <!-- Inline 6-Month Chart Widget (From Chat Page-2.pdf) -->
+            <div class="chat-embedded-stats-widget">
+              <!-- Cycle bar -->
+              <div class="widget-sub-card">
+                <div class="wsc-header">
+                  <span class="wsc-dot"></span>
+                  <strong>Cycle</strong>
+                </div>
+                <div class="widget-cycle-bars">
+                  <div class="wc-bar"><div class="fill" style="height: 18%;"></div><span>1</span></div>
+                  <div class="wc-bar"><div class="fill" style="height: 20%;"></div><span>2</span></div>
+                  <div class="wc-bar"><div class="fill" style="height: 30%;"></div><span>3</span></div>
+                  <div class="wc-bar"><div class="fill" style="height: 32%;"></div><span>4</span></div>
+                  <div class="wc-bar"><div class="fill" style="height: 45%;"></div><span>5</span></div>
+                  <div class="wc-bar active"><div class="fill" style="height: 62%;"></div><span>6</span></div>
+                </div>
+              </div>
+
+              <!-- Weight line -->
+              <div class="widget-sub-card">
+                <div class="wsc-header">
+                  <span class="wsc-dot pink"></span>
+                  <strong>Weight</strong>
+                </div>
+                <div class="widget-weight-curve">
+                  <svg viewBox="0 0 260 70" width="100%" height="60">
+                    <defs>
+                      <linearGradient id="widgetPink" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#FF6B8B" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#FF6B8B" stop-opacity="0.0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M 10,22 Q 50,18 100,28 T 190,40 T 250,48 L 250,70 L 10,70 Z" fill="url(#widgetPink)"/>
+                    <path d="M 10,22 Q 50,18 100,28 T 190,40 T 250,48" fill="none" stroke="#FF6B8B" stroke-width="2.5"/>
+                    <circle cx="10" cy="22" r="3.5" fill="#FFF" stroke="#FF6B8B" stroke-width="2"/>
+                    <circle cx="60" cy="20" r="3.5" fill="#FFF" stroke="#FF6B8B" stroke-width="2"/>
+                    <circle cx="110" cy="30" r="3.5" fill="#FFF" stroke="#FF6B8B" stroke-width="2"/>
+                    <circle cx="160" cy="36" r="3.5" fill="#FFF" stroke="#FF6B8B" stroke-width="2"/>
+                    <circle cx="210" cy="43" r="3.5" fill="#FFF" stroke="#FF6B8B" stroke-width="2"/>
+                    <circle cx="250" cy="48" r="3.5" fill="#FFF" stroke="#FF6B8B" stroke-width="2"/>
+                  </svg>
+                  <div class="wsc-months">
+                    <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Steps Tabs & Bar Chart -->
+              <div class="widget-sub-card">
+                <div class="widget-tabs-pill">
+                  <span class="active">Daily</span>
+                  <span>Weekly</span>
+                  <span>Monthly</span>
+                </div>
+                <div class="wsc-header mt-sm">
+                  <span class="wsc-dot steps"></span>
+                  <strong>Steps</strong>
+                </div>
+                <div class="widget-steps-bars">
+                  <div class="ws-col"><div class="fill" style="height: 10%;"></div><span>S</span></div>
+                  <div class="ws-col"><div class="fill" style="height: 28%;"></div><span>M</span></div>
+                  <div class="ws-col"><div class="fill" style="height: 35%;"></div><span>T</span></div>
+                  <div class="ws-col"><div class="fill" style="height: 85%;"></div><span>W</span></div>
+                  <div class="ws-col active"><div class="fill" style="height: 95%;"></div><span>T</span></div>
+                  <div class="ws-col"><div class="fill" style="height: 12%;"></div><span>F</span></div>
+                  <div class="ws-col"><div class="fill" style="height: 30%;"></div><span>S</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Messages Container -->
+            <div class="messages-list" id="messagesList"></div>
+
+            <!-- Dynamic Interactive Option Chips -->
+            <div class="interactive-chips-bar" id="interactiveChipsBar"></div>
+          </div>
+
+          <!-- Bottom Chat Input Bar -->
+          <div class="chat-input-bar">
+            <button class="chat-plus-btn" id="chatAttachBtn" title="Upload Lab Report or Ultrasound">+</button>
+            <div class="chat-input-pill">
+              <input type="text" id="chatInputText" placeholder="Ask anything…" autocomplete="off" />
+            </div>
+            <button class="chat-mic-btn" id="chatMicBtn" title="Voice Input">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+            </button>
+            <button class="chat-send-btn" id="chatSendBtn" aria-label="Send Message">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= 13. MAIN VIEW 3: SYMPTOM INPUTS (Symptoms.pdf) ================= -->
+        <section class="screen-view" id="view-symptoms">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="symptomsBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Add Symptoms</h3>
+              <p>September 2026</p>
+            </div>
+            <button class="icon-btn" aria-label="Voice Log">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="screen-scrollable-body">
+            <!-- Calendar Strip -->
+            <div class="calendar-strip-container">
+              <div class="cal-month-nav">
+                <strong>September</strong>
+                <div class="cal-nav-arrows">
+                  <span>‹</span>
+                  <span>›</span>
+                </div>
+              </div>
+              <div class="cal-days-row">
+                <div class="cal-day-cell"><span class="day-num">18</span><span class="day-name">Mo</span></div>
+                <div class="cal-day-cell"><span class="day-num">19</span><span class="day-name">Tu</span></div>
+                <div class="cal-day-cell"><span class="day-num">20</span><span class="day-name">Wed</span></div>
+                <div class="cal-day-cell active"><span class="day-num">21</span><span class="day-name">Th</span></div>
+                <div class="cal-day-cell"><span class="day-num">22</span><span class="day-name">Fr</span></div>
+                <div class="cal-day-cell"><span class="day-num">23</span><span class="day-name">Sa</span></div>
+                <div class="cal-day-cell"><span class="day-num">24</span><span class="day-name">Su</span></div>
+              </div>
+            </div>
+
+            <!-- Search Symptoms -->
+            <div class="symptom-search-bar">
+              <span class="search-ico">🔍</span>
+              <input type="text" placeholder="Search symptom…" />
+            </div>
+
+            <!-- Pregnancy Test -->
+            <div class="symptom-category-group">
+              <h6>Pregnancy test</h6>
+              <div class="chips-flex">
+                <button class="sym-pill">Faint line</button>
+                <button class="sym-pill">Positive</button>
+                <button class="sym-pill">No tests</button>
+                <button class="sym-pill selected">Negative</button>
+              </div>
+            </div>
+
+            <!-- Sexual Activity -->
+            <div class="symptom-category-group">
+              <h6>Sexual activity</h6>
+              <div class="chips-flex">
+                <button class="sym-pill">Protected Sex</button>
+                <button class="sym-pill">Orgasm</button>
+                <button class="sym-pill">High activity</button>
+                <button class="sym-pill">Unprotected sex</button>
+              </div>
+            </div>
+
+            <!-- Mental -->
+            <div class="symptom-category-group">
+              <h6>Mental</h6>
+              <div class="chips-flex">
+                <button class="sym-pill selected">Breathing Exercises</button>
+                <button class="sym-pill">Stress</button>
+                <button class="sym-pill">Yoga</button>
+                <button class="sym-pill">Meditation</button>
+              </div>
+            </div>
+
+            <!-- Discharge -->
+            <div class="symptom-category-group">
+              <h6>Discharge</h6>
+              <div class="chips-flex">
+                <button class="sym-pill">Unusual</button>
+                <button class="sym-pill">Sticky</button>
+                <button class="sym-pill">Bleeding</button>
+                <button class="sym-pill">Heavy Bleeding</button>
+                <button class="sym-pill">Low Bleeding</button>
+              </div>
+            </div>
+
+            <!-- Skin / Hair -->
+            <div class="symptom-category-group">
+              <h6>Skin / Hair</h6>
+              <div class="chips-flex">
+                <button class="sym-pill selected">Acne (jawline/hormonal)</button>
+                <button class="sym-pill selected">Excess facial/body hair</button>
+                <button class="sym-pill">Skin darkening</button>
+                <button class="sym-pill">Hair thinning</button>
+              </div>
+            </div>
+
+            <!-- Physical Activity -->
+            <div class="symptom-category-group">
+              <h6>Physical activity</h6>
+              <div class="chips-flex">
+                <button class="sym-pill">No Exercise</button>
+                <button class="sym-pill">Team sports</button>
+                <button class="sym-pill">Cycling</button>
+                <button class="sym-pill">Gym</button>
+                <button class="sym-pill">Dancing</button>
+                <button class="sym-pill">Aerobics</button>
+                <button class="sym-pill">Swimming</button>
+              </div>
+            </div>
+
+            <!-- Mood -->
+            <div class="symptom-category-group">
+              <h6>Mood</h6>
+              <div class="chips-flex">
+                <button class="sym-pill">Anxious</button>
+                <button class="sym-pill">Sad</button>
+                <button class="sym-pill selected">Happy</button>
+                <button class="sym-pill selected">Calm</button>
+                <button class="sym-pill">Angry</button>
+                <button class="sym-pill">Energetic</button>
+                <button class="sym-pill">Confused</button>
+                <button class="sym-pill">Depressed</button>
+              </div>
+            </div>
+
+            <!-- Numerical Inputs (Weight, Note, Water) -->
+            <div class="symptom-card-input">
+              <div class="sci-header">
+                <span>⚖️ Weight</span>
+                <span class="edit-ico">✏️</span>
+              </div>
+              <strong class="sci-value" id="symWeightDisplay">75.02 kg</strong>
+            </div>
+
+            <div class="symptom-card-input">
+              <div class="sci-header">
+                <span>📝 Note</span>
+                <span class="edit-ico">✏️</span>
+              </div>
+              <p class="sci-text">I had a very good day and walked 30 minutes after dinner.</p>
+            </div>
+
+            <div class="symptom-card-input">
+              <div class="sci-header">
+                <span>💧 Water</span>
+                <span class="edit-ico">✏️</span>
+              </div>
+              <strong class="sci-value">1,750 ml / 2,000 ml</strong>
+            </div>
+
+            <div class="action-buttons-group mb-xl">
+              <button class="btn-primary-purple" id="btnSaveSymptoms">Save Symptoms</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 14. MAIN VIEW 4: FIND SPECIALISTS ================= -->
+        <section class="screen-view" id="view-specialists">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="specialistsBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Find Specialists</h3>
+            </div>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-scrollable-body" style="padding-top: 10px;">
+            <!-- Search by Name or Specialty -->
+            <div class="specialist-search-box">
+              <input type="text" id="inputSpecialistSearch" placeholder="Search by name or specialty..." />
+              <svg class="search-ico-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+
+            <!-- Horizontal Filter Pills Row -->
+            <div class="filter-pills-row" id="specialistFiltersRow">
+              <button class="filter-pill active" data-specialty="all">✓ All <span class="chevron">▼</span></button>
+              <button class="filter-pill" data-specialty="gynecologist">Gynecologist <span class="chevron">▼</span></button>
+              <button class="filter-pill" data-specialty="endocrinologist">Endocrinologist <span class="chevron">▼</span></button>
+              <button class="filter-pill" data-specialty="dermatologist">Dermatologist <span class="chevron">▼</span></button>
+              <button class="filter-pill" data-specialty="psychologist">Psychologist <span class="chevron">▼</span></button>
+              <button class="filter-pill" data-specialty="dietitian">Dietitian <span class="chevron">▼</span></button>
+            </div>
+
+            <!-- Specialists Card List -->
+            <div class="specialists-list" id="specialistsList">
+              <!-- Dr. Laiba Khan -->
+              <div class="specialist-card" data-specialty="endocrinologist" data-name="dr laiba khan endocrinologist">
+                <div class="spec-top-row">
+                  <div class="spec-avatar-col">
+                    <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=120&h=120&fit=crop&crop=faces" alt="Dr. Laiba Khan" class="spec-avatar-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  </div>
+                  <div class="spec-info-col">
+                    <div class="spec-name-rating">
+                      <h4 class="spec-name">Dr. Laiba Khan</h4>
+                      <span class="spec-rating">⭐ 4.9 (36 Reviews)</span>
+                    </div>
+                    <p class="spec-role">Endocrinologist</p>
+                  </div>
+                </div>
+
+                <div class="spec-badges-row">
+                  <span class="spec-badge blue">Hospital Affiliated</span>
+                  <span class="spec-badge green">PCOS/PMOS Certified</span>
+                </div>
+
+                <div class="spec-meta-list">
+                  <div class="spec-meta-item">
+                    <span class="meta-ico blue-check">☑</span>
+                    <span>KMC Peshawar</span>
+                  </div>
+                  <div class="spec-meta-item">
+                    <span class="meta-ico clock">🕒</span>
+                    <span>Next available: Tomorrow</span>
+                  </div>
+                </div>
+
+                <div class="spec-actions-row">
+                  <button class="btn-spec-inperson" data-doc="Dr. Laiba Khan" data-specialty="Endocrinologist">In-Person</button>
+                  <button class="btn-spec-online" data-doc="Dr. Laiba Khan" data-specialty="Endocrinologist">Online Consult</button>
+                </div>
+              </div>
+
+              <!-- Dr. Afsheen Sharif -->
+              <div class="specialist-card" data-specialty="gynecologist" data-name="dr afsheen sharif gynecologist">
+                <div class="spec-top-row">
+                  <div class="spec-avatar-col">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120&h=120&fit=crop&crop=faces" alt="Dr. Afsheen Sharif" class="spec-avatar-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  </div>
+                  <div class="spec-info-col">
+                    <div class="spec-name-rating">
+                      <h4 class="spec-name">Dr. Afsheen Sharif</h4>
+                      <span class="spec-rating">⭐ 4.8 (26 Reviews)</span>
+                    </div>
+                    <p class="spec-role">Gynecologist</p>
+                  </div>
+                </div>
+
+                <div class="spec-badges-row">
+                  <span class="spec-badge blue">Hospital Affiliated</span>
+                  <span class="spec-badge purple">Reproductive Health</span>
+                </div>
+
+                <div class="spec-meta-list">
+                  <div class="spec-meta-item">
+                    <span class="meta-ico blue-check">☑</span>
+                    <span>RMI Peshawar</span>
+                  </div>
+                  <div class="spec-meta-item">
+                    <span class="meta-ico clock">🕒</span>
+                    <span>Next available: 8th March</span>
+                  </div>
+                </div>
+
+                <div class="spec-actions-row">
+                  <button class="btn-spec-inperson" data-doc="Dr. Afsheen Sharif" data-specialty="Gynecologist">In-Person</button>
+                  <button class="btn-spec-online" data-doc="Dr. Afsheen Sharif" data-specialty="Gynecologist">Online Consult</button>
+                </div>
+              </div>
+
+              <!-- Dr. Michael Chen -->
+              <div class="specialist-card" data-specialty="psychologist" data-name="dr michael chen mental health specialist psychologist">
+                <div class="spec-top-row">
+                  <div class="spec-avatar-col">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=120&h=120&fit=crop&crop=faces" alt="Dr. Michael Chen" class="spec-avatar-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  </div>
+                  <div class="spec-info-col">
+                    <div class="spec-name-rating">
+                      <h4 class="spec-name">Dr. Michael Chen</h4>
+                      <span class="spec-rating">⭐ 4.5 (60 Reviews)</span>
+                    </div>
+                    <p class="spec-role">Mental Health Specialist</p>
+                  </div>
+                </div>
+
+                <div class="spec-badges-row">
+                  <span class="spec-badge blue">Hospital Affiliated</span>
+                  <span class="spec-badge pink">Brain Fog & Anxiety</span>
+                </div>
+
+                <div class="spec-meta-list">
+                  <div class="spec-meta-item">
+                    <span class="meta-ico blue-check">☑</span>
+                    <span>RMI Peshawar</span>
+                  </div>
+                  <div class="spec-meta-item">
+                    <span class="meta-ico clock">🕒</span>
+                    <span>Next available: 8th March</span>
+                  </div>
+                </div>
+
+                <div class="spec-actions-row">
+                  <button class="btn-spec-inperson" data-doc="Dr. Michael Chen" data-specialty="Mental Health Specialist">In-Person</button>
+                  <button class="btn-spec-online" data-doc="Dr. Michael Chen" data-specialty="Mental Health Specialist">Online Consult</button>
+                </div>
+              </div>
+
+              <!-- Dr. Ayesha Malik (Dermatologist) -->
+              <div class="specialist-card" data-specialty="dermatologist" data-name="dr ayesha malik dermatologist skin acne hirsutism">
+                <div class="spec-top-row">
+                  <div class="spec-avatar-col">
+                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=120&h=120&fit=crop&crop=faces" alt="Dr. Ayesha Malik" class="spec-avatar-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  </div>
+                  <div class="spec-info-col">
+                    <div class="spec-name-rating">
+                      <h4 class="spec-name">Dr. Ayesha Malik</h4>
+                      <span class="spec-rating">⭐ 4.9 (48 Reviews)</span>
+                    </div>
+                    <p class="spec-role">Dermatologist (Acne & Hirsutism)</p>
+                  </div>
+                </div>
+
+                <div class="spec-badges-row">
+                  <span class="spec-badge blue">Hospital Affiliated</span>
+                  <span class="spec-badge purple">Androgenic Skin Care</span>
+                </div>
+
+                <div class="spec-meta-list">
+                  <div class="spec-meta-item">
+                    <span class="meta-ico blue-check">☑</span>
+                    <span>Northwest General Hospital</span>
+                  </div>
+                  <div class="spec-meta-item">
+                    <span class="meta-ico clock">🕒</span>
+                    <span>Next available: Tomorrow</span>
+                  </div>
+                </div>
+
+                <div class="spec-actions-row">
+                  <button class="btn-spec-inperson" data-doc="Dr. Ayesha Malik" data-specialty="Dermatologist">In-Person</button>
+                  <button class="btn-spec-online" data-doc="Dr. Ayesha Malik" data-specialty="Dermatologist">Online Consult</button>
+                </div>
+              </div>
+
+              <!-- Dr. Sana Tariq (Dietitian / Nutritionist) -->
+              <div class="specialist-card" data-specialty="dietitian" data-name="dr sana tariq dietitian nutritionist metabolic diet">
+                <div class="spec-top-row">
+                  <div class="spec-avatar-col">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=faces" alt="Dr. Sana Tariq" class="spec-avatar-img" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  </div>
+                  <div class="spec-info-col">
+                    <div class="spec-name-rating">
+                      <h4 class="spec-name">Dr. Sana Tariq</h4>
+                      <span class="spec-rating">⭐ 5.0 (52 Reviews)</span>
+                    </div>
+                    <p class="spec-role">PCOS/PMOS Dietitian & Nutritionist</p>
+                  </div>
+                </div>
+
+                <div class="spec-badges-row">
+                  <span class="spec-badge green">Insulin Sensitizing Diet</span>
+                  <span class="spec-badge blue">Anti-Inflammatory</span>
+                </div>
+
+                <div class="spec-meta-list">
+                  <div class="spec-meta-item">
+                    <span class="meta-ico blue-check">☑</span>
+                    <span>Peshawar Care Clinic</span>
+                  </div>
+                  <div class="spec-meta-item">
+                    <span class="meta-ico clock">🕒</span>
+                    <span>Next available: Today</span>
+                  </div>
+                </div>
+
+                <div class="spec-actions-row">
+                  <button class="btn-spec-inperson" data-doc="Dr. Sana Tariq" data-specialty="Dietitian">In-Person</button>
+                  <button class="btn-spec-online" data-doc="Dr. Sana Tariq" data-specialty="Dietitian">Online Consult</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 15. MAIN VIEW 5: COMMUNITY (Feed & Research) ================= -->
+        <section class="screen-view" id="view-community">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="communityBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Community</h3>
+            </div>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <!-- Segmented Pill Control (Feed vs Research) -->
+          <div class="community-segment-wrapper">
+            <div class="community-segmented-control">
+              <button class="comm-seg-pill active" id="tabCommFeed">Feed</button>
+              <button class="comm-seg-pill" id="tabCommResearch">Research</button>
+            </div>
+          </div>
+
+          <div class="screen-scrollable-body" style="padding-top: 6px;">
+            <!-- PANE 1: FEED PANE -->
+            <div class="comm-pane active" id="paneCommFeed">
+              <!-- Post 1: Maya R. (Metformin) -->
+              <div class="comm-post-card">
+                <div class="post-header-row">
+                  <div class="post-author-box">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces" alt="Maya R." class="post-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23F3EEFD\'/><circle cx=\'50\' cy=\'40\' r=\'20\' fill=\'%237047EB\'/><path d=\'M20,85 C20,65 35,60 50,60 C65,60 80,65 80,85 Z\' fill=\'%237047EB\'/></svg>';" />
+                    <div>
+                      <h5 class="post-author-name">Maya R.</h5>
+                      <span class="post-time-meta"><span class="green-online-dot"></span> 2 hours ago</span>
+                    </div>
+                  </div>
+                  <button class="post-bookmark-btn" title="Bookmark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="10" y1="10" x2="14" y2="10"></line>
+                    </svg>
+                  </button>
+                </div>
+
+                <p class="post-body-text">
+                  Just started metformin and feeling hopeful! My doctor explained it helps with insulin resistance. Anyone else on this journey?
+                </p>
+
+                <div class="post-tags-row">
+                  <span class="comm-tag-pill">medication</span>
+                  <span class="comm-tag-pill">insulin-resistance</span>
+                </div>
+
+                <div class="post-doc-reply-box">
+                  <strong>Doctor Replied:</strong> "This is very common. The surge can affect your blood glucose stability"
+                </div>
+
+                <div class="post-footer-actions">
+                  <button class="btn-post-action btn-like" data-likes="24">
+                    <span class="heart-ico">🤍</span> <span class="like-num">24</span>
+                  </button>
+                  <button class="btn-post-action btn-comment">
+                    <span class="comment-ico">💬</span> 4
+                  </button>
+                </div>
+              </div>
+
+              <!-- Post 2: Dr. Sarah Chen -->
+              <div class="comm-post-card">
+                <div class="post-header-row">
+                  <div class="post-author-box">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=faces" alt="Dr. Sarah Chen" class="post-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                    <div>
+                      <h5 class="post-author-name">Dr. Sarah Chen</h5>
+                      <span class="post-time-meta"><span class="green-online-dot"></span> 2 hours ago</span>
+                    </div>
+                  </div>
+                  <button class="post-bookmark-btn" title="Bookmark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="10" y1="10" x2="14" y2="10"></line>
+                    </svg>
+                  </button>
+                </div>
+
+                <p class="post-body-text">
+                  Reminder: PCOS/PMOS management is not just about fertility. Focus on metabolic health, mental wellbeing, and quality of life. You deserve comprehensive care. 💜
+                </p>
+
+                <div class="post-tags-row">
+                  <span class="comm-tag-pill">doctor-advice</span>
+                </div>
+
+                <div class="post-footer-actions">
+                  <button class="btn-post-action btn-like" data-likes="123">
+                    <span class="heart-ico">🤍</span> <span class="like-num">123</span>
+                  </button>
+                  <button class="btn-post-action btn-comment">
+                    <span class="comment-ico">💬</span> 40
+                  </button>
+                </div>
+              </div>
+
+              <!-- Post 3: Maya R. (Brain Fog) -->
+              <div class="comm-post-card">
+                <div class="post-header-row">
+                  <div class="post-author-box">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Maya R." class="post-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23F3EEFD\'/><circle cx=\'50\' cy=\'40\' r=\'20\' fill=\'%237047EB\'/><path d=\'M20,85 C20,65 35,60 50,60 C65,60 80,65 80,85 Z\' fill=\'%237047EB\'/></svg>';" />
+                    <div>
+                      <h5 class="post-author-name">Maya R.</h5>
+                      <span class="post-time-meta"><span class="green-online-dot"></span> 2 hours ago</span>
+                    </div>
+                  </div>
+                  <button class="post-bookmark-btn" title="Bookmark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="10" y1="10" x2="14" y2="10"></line>
+                    </svg>
+                  </button>
+                </div>
+
+                <p class="post-body-text">
+                  Does anyone else experience terrible brain fog? Some days I can't focus at all. What helps you?
+                </p>
+
+                <div class="post-tags-row">
+                  <span class="comm-tag-pill">mental-health</span>
+                  <span class="comm-tag-pill">symptoms</span>
+                </div>
+
+                <div class="post-footer-actions">
+                  <button class="btn-post-action btn-like" data-likes="13">
+                    <span class="heart-ico">🤍</span> <span class="like-num">13</span>
+                  </button>
+                  <button class="btn-post-action btn-comment">
+                    <span class="comment-ico">💬</span> 12
+                  </button>
+                </div>
+              </div>
+
+              <!-- Post 4: Maya R. (Hirsutism) -->
+              <div class="comm-post-card mb-xl">
+                <div class="post-header-row">
+                  <div class="post-author-box">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=faces" alt="Maya R." class="post-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23F3EEFD\'/><circle cx=\'50\' cy=\'40\' r=\'20\' fill=\'%237047EB\'/><path d=\'M20,85 C20,65 35,60 50,60 C65,60 80,65 80,85 Z\' fill=\'%237047EB\'/></svg>';" />
+                    <div>
+                      <h5 class="post-author-name">Maya R.</h5>
+                      <span class="post-time-meta"><span class="green-online-dot"></span> 2 hours ago</span>
+                    </div>
+                  </div>
+                  <button class="post-bookmark-btn" title="Bookmark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="10" y1="10" x2="14" y2="10"></line>
+                    </svg>
+                  </button>
+                </div>
+
+                <p class="post-body-text">
+                  What helps with hirsutism?
+                </p>
+
+                <div class="post-tags-row">
+                  <span class="comm-tag-pill">advice</span>
+                  <span class="comm-tag-pill">medication</span>
+                </div>
+
+                <div class="post-footer-actions">
+                  <button class="btn-post-action btn-like" data-likes="24">
+                    <span class="heart-ico">🤍</span> <span class="like-num">24</span>
+                  </button>
+                  <button class="btn-post-action btn-comment">
+                    <span class="comment-ico">💬</span> 4
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANE 2: RESEARCH PANE -->
+            <div class="comm-pane" id="paneCommResearch" style="display: none;">
+              <!-- Article 1 -->
+              <div class="research-article-card" id="articleCardInsulin">
+                <h4 class="rac-title">Understanding Insulin Resistance in PCOS/PMOS</h4>
+                <p class="rac-subtitle">How insulin resistance affects PCOS/PMOS and what you can do about it</p>
+                <div class="rac-footer">
+                  <span class="rac-badge">5 min read</span>
+                  <span class="rac-arrow">Read article ›</span>
+                </div>
+              </div>
+
+              <!-- Article 2 -->
+              <div class="research-article-card" id="articleCardInflammation">
+                <h4 class="rac-title">The Role of Inflammation</h4>
+                <p class="rac-subtitle">Recent research on inflammation markers and PCOS/PMOS management</p>
+                <div class="rac-footer">
+                  <span class="rac-badge">5 min read</span>
+                  <span class="rac-arrow">Read article ›</span>
+                </div>
+              </div>
+
+              <!-- Article 3 -->
+              <div class="research-article-card mb-xl" id="articleCardMentalHealth">
+                <h4 class="rac-title">Mental Health & PCOS/PMOS</h4>
+                <p class="rac-subtitle">The connection between PCOS/PMOS, anxiety, and depression</p>
+                <div class="rac-footer">
+                  <span class="rac-badge">5 min read</span>
+                  <span class="rac-arrow">Read article ›</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 16. MAIN VIEW 6: RESEARCH ARTICLE DETAIL ================= -->
+        <section class="screen-view" id="view-research-detail">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="researchDetailBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Research</h3>
+            </div>
+            <div style="width: 36px;"></div>
+          </div>
+
+          <div class="screen-scrollable-body" style="padding-top: 10px;">
+            <!-- Illustrated Hero Banner -->
+            <div class="article-hero-banner">
+              <svg viewBox="0 0 340 180" width="100%" height="160" class="hero-svg-artwork">
+                <defs>
+                  <linearGradient id="bgPastelPink" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#FFE4EE"/>
+                    <stop offset="100%" stop-color="#FFD1E3"/>
+                  </linearGradient>
+                  <pattern id="pinkChecker" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect width="10" height="10" fill="#FFD7E6"/>
+                    <rect x="10" width="10" height="10" fill="#FFEBF2"/>
+                    <rect y="10" width="10" height="10" fill="#FFEBF2"/>
+                    <rect x="10" y="10" width="10" height="10" fill="#FFD7E6"/>
+                  </pattern>
+                </defs>
+                <rect width="340" height="180" rx="20" fill="url(#pinkChecker)"/>
+                <!-- Scalloped Awning Canopy -->
+                <path d="M10,0 L330,0 L330,35 Q305,45 280,35 Q255,45 230,35 Q205,45 180,35 Q155,45 130,35 Q105,45 80,35 Q55,45 30,35 Q15,40 10,35 Z" fill="#FF4D6D"/>
+                <path d="M30,0 L55,0 L55,35 Q42,42 30,35 Z" fill="#FFFFFF" opacity="0.6"/>
+                <path d="M80,0 L105,0 L105,35 Q92,42 80,35 Z" fill="#FFFFFF" opacity="0.6"/>
+                <path d="M130,0 L155,0 L155,35 Q142,42 130,35 Z" fill="#FFFFFF" opacity="0.6"/>
+                <path d="M180,0 L205,0 L205,35 Q192,42 180,35 Z" fill="#FFFFFF" opacity="0.6"/>
+                <path d="M230,0 L255,0 L255,35 Q242,42 230,35 Z" fill="#FFFFFF" opacity="0.6"/>
+                <path d="M280,0 L305,0 L305,35 Q292,42 280,35 Z" fill="#FFFFFF" opacity="0.6"/>
+                <!-- 3D Bubbly Text -->
+                <text x="170" y="78" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="28" fill="#FF3366" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill" filter="drop-shadow(0 4px 6px rgba(255, 51, 102, 0.3))">Insulin</text>
+                <text x="170" y="112" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="30" fill="#FF3366" stroke="#FFFFFF" stroke-width="4" paint-order="stroke fill" filter="drop-shadow(0 4px 6px rgba(255, 51, 102, 0.3))">Resistance</text>
+                <!-- Cute Mascot (Cloud/Sheep with blush) -->
+                <circle cx="170" cy="148" r="20" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.08))"/>
+                <circle cx="156" cy="148" r="14" fill="#FFFFFF"/>
+                <circle cx="184" cy="148" r="14" fill="#FFFFFF"/>
+                <!-- Eyes -->
+                <ellipse cx="165" cy="146" rx="2" ry="3" fill="#1C1924"/>
+                <ellipse cx="175" cy="146" rx="2" ry="3" fill="#1C1924"/>
+                <!-- Blush -->
+                <circle cx="160" cy="151" r="3" fill="#FF94C2" opacity="0.8"/>
+                <circle cx="180" cy="151" r="3" fill="#FF94C2" opacity="0.8"/>
+              </svg>
+            </div>
+
+            <div class="article-meta-row">
+              <span>October 4, 2021</span>
+              <span>•</span>
+              <span>4 min read</span>
+            </div>
+
+            <h2 class="article-main-heading">Understanding Insulin Resistance in PCOS/PMOS</h2>
+
+            <div class="article-content-body">
+              <div class="article-section-block">
+                <h4>🍬 What is Insulin Resistance?</h4>
+                <ul>
+                  <li>Insulin is a hormone that helps your body use sugar for energy.</li>
+                  <li>In insulin resistance, cells don’t respond well to insulin, so the body produces more to compensate.</li>
+                  <li>This can lead to higher blood sugar levels and weight gain.</li>
+                </ul>
+              </div>
+
+              <div class="article-section-block">
+                <h4>🌸 Link to PCOS/PMOS:</h4>
+                <ul>
+                  <li>Many people with PCOS/PMOS experience insulin resistance, even if they are not overweight.</li>
+                  <li>Excess insulin can trigger the ovaries to produce more androgens (male hormones), causing irregular periods, acne, and unwanted hair growth.</li>
+                </ul>
+              </div>
+
+              <div class="article-section-block">
+                <h4>⚖️ Health Implications:</h4>
+                <ul>
+                  <li>Increased risk of type 2 diabetes, high blood pressure, and heart disease.</li>
+                  <li>Can make weight management and fertility more challenging.</li>
+                </ul>
+              </div>
+
+              <div class="article-section-block">
+                <h4>🥗 Managing Insulin Resistance:</h4>
+                <ul>
+                  <li><strong>Balanced diet:</strong> focus on whole grains, lean proteins, vegetables, and healthy fats.</li>
+                  <li><strong>Regular exercise:</strong> helps cells use insulin more effectively.</li>
+                  <li><strong>Medical support:</strong> doctors may recommend medications like metformin to improve insulin sensitivity.</li>
+                </ul>
+              </div>
+
+              <div class="article-section-block">
+                <h4>💡 Lifestyle Tips:</h4>
+                <ul>
+                  <li>Avoid excessive sugar and refined carbs.</li>
+                  <li>Maintain consistent sleep and stress management.</li>
+                  <li>Monitor blood sugar levels if advised by your healthcare provider.</li>
+                </ul>
+              </div>
+
+              <div class="article-takeaway-card mb-xl">
+                <span class="takeaway-star">✨</span>
+                <p>Understanding insulin resistance is key to managing PCOS/PMOS and improving overall health. Small daily changes can make a big difference.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 17. MAIN VIEW 5: USER PROFILE & EMBEDDED DETECTION ================= -->
+        <section class="screen-view" id="view-profile">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="profileBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>My Profile</h3>
+              <p>PCOS/PMOS Health Passport</p>
+            </div>
+            <button class="icon-btn" id="btnOpenVitalsModal" title="Edit Vitals">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="screen-scrollable-body" id="profileScrollArea">
+            <!-- User Identity Hero Card -->
+            <div class="profile-hero-card">
+              <div class="profile-avatar-aura">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="Sarah" class="profile-avatar-img" id="profAvatarImg" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23F3EEFD\'/><circle cx=\'50\' cy=\'40\' r=\'20\' fill=\'%237047EB\'/><path d=\'M20,85 C20,65 35,60 50,60 C65,60 80,65 80,85 Z\' fill=\'%237047EB\'/></svg>';" />
+                <button class="prof-camera-badge" id="btnChangeAvatar" title="Change Avatar">📷</button>
+                <span class="prof-online-dot" title="Health Data Synced"></span>
+              </div>
+              <h3 class="prof-name"><span id="profUserName">Sarah Jenkins</span> ✨</h3>
+              <p class="prof-demographics"><span id="profUserAge">26</span> years old • Female • Blood Group: O+</p>
+              <div class="prof-email" id="profUserEmail">sarah.jenkins@gmail.com</div>
+              <div class="profile-membership-badge">🌸 CysterCare Member • Active Care Plan</div>
+            </div>
+
+            <!-- Vitals & Physical Metrics Grid -->
+            <div class="vitals-grid-header">
+              <h4>Vitals & Body Metrics</h4>
+              <button class="btn-edit-vitals-text" id="btnEditVitalsLink">Edit Vitals</button>
+            </div>
+
+            <div class="vitals-metrics-grid">
+              <!-- Weight -->
+              <div class="vcard" id="cardProfWeight">
+                <div class="vcard-top">
+                  <span class="vcard-label"><span class="vcard-icon">⚖️</span> Weight</span>
+                  <span class="vcard-pill green">▼ -1.2 kg</span>
+                </div>
+                <div class="vcard-val"><span id="profWeightVal">75.0</span><span class="vcard-unit">kg</span></div>
+                <div class="vcard-subtext">Last updated today</div>
+              </div>
+
+              <!-- Height -->
+              <div class="vcard" id="cardProfHeight">
+                <div class="vcard-top">
+                  <span class="vcard-label"><span class="vcard-icon">📏</span> Height</span>
+                  <span class="vcard-pill purple">Adult</span>
+                </div>
+                <div class="vcard-val"><span id="profHeightVal">165</span><span class="vcard-unit">cm</span></div>
+                <div class="vcard-subtext">5 ft 5 in</div>
+              </div>
+
+              <!-- BMI -->
+              <div class="vcard" id="cardProfBmi">
+                <div class="vcard-top">
+                  <span class="vcard-label"><span class="vcard-icon">📊</span> Body Mass Index</span>
+                  <span class="vcard-pill amber" id="profBmiPill">Overweight</span>
+                </div>
+                <div class="vcard-val"><span id="profBmiVal">27.5</span><span class="vcard-unit">kg/m²</span></div>
+                <div class="vcard-subtext" id="profBmiSubtext">Insulin resistance target</div>
+              </div>
+
+              <!-- Cycle Length -->
+              <div class="vcard" id="cardProfCycle">
+                <div class="vcard-top">
+                  <span class="vcard-label"><span class="vcard-icon">🔄</span> Avg Cycle</span>
+                  <span class="vcard-pill amber" id="profCyclePill">Delayed</span>
+                </div>
+                <div class="vcard-val"><span id="profCycleVal">49</span><span class="vcard-unit">days</span></div>
+                <div class="vcard-subtext">Oligomenorrhea range</div>
+              </div>
+            </div>
+
+            <!-- Embedded Detection Section within Profile -->
+            <div class="profile-detection-card" id="profDetCard">
+              <div class="prof-det-header">
+                <div class="prof-det-header-left">
+                  <div class="prof-det-icon">🔬</div>
+                  <div class="prof-det-title-box">
+                    <h4>PCOS/PMOS Detection Assessment</h4>
+                    <small>Rotterdam & 2023 Monash Guidelines</small>
+                  </div>
+                </div>
+                <span class="prof-det-badge-ai">AI Layer 2</span>
+              </div>
+
+              <div class="prof-det-status-banner">
+                <div class="prof-det-top-indicators">
+                  <span class="prof-status-pill" id="profDetStatusPill">PCOS/PMOS Pattern Detected</span>
+                  <span class="prof-confidence-badge" id="profDetConfidenceTag">98% • Very High</span>
+                </div>
+                <span class="prof-stage-tag" id="profDetStageTag">Enhanced Detection (Stage 2 — Labs Included)</span>
+              </div>
+
+              <!-- Clinical Criteria Matrix Checklist -->
+              <div class="prof-criteria-list">
+                <div class="prof-crit-item">
+                  <span class="prof-crit-check">✅</span>
+                  <div class="prof-crit-info">
+                    <strong>Ovulatory Dysfunction (Dimension A)</strong>
+                    <small id="profCritCycleText">Cycle interval averages 49 days (delayed beyond 21–35 days window).</small>
+                  </div>
+                </div>
+
+                <div class="prof-crit-item">
+                  <span class="prof-crit-check">✅</span>
+                  <div class="prof-crit-info">
+                    <strong>Hyperandrogenism (Dimension B)</strong>
+                    <small id="profCritAndrogenText">Persistent facial hair (mFG: 8) & elevated serum testosterone (2.8 nmol/L).</small>
+                  </div>
+                </div>
+
+                <div class="prof-crit-item">
+                  <span class="prof-crit-check" id="profCritMorphCheck">⏳</span>
+                  <div class="prof-crit-info">
+                    <strong>Polycystic Ovarian Morphology (Dimension C)</strong>
+                    <small id="profCritMorphText">Pelvic ultrasound or serum AMH pending to elevate to Comprehensive (Stage 3).</small>
+                  </div>
+                </div>
+
+                <div class="prof-crit-item">
+                  <span class="prof-crit-check">🛡️</span>
+                  <div class="prof-crit-info">
+                    <strong>Differential Diagnoses Matrix</strong>
+                    <small>TSH normal (2.1 mIU/L), Prolactin normal (18.0 ng/mL). Thyroid & prolactinoma ruled out.</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Detection Action Buttons -->
+              <div class="prof-det-actions">
+                <button class="btn-prof-primary-det" id="btnProfViewDetection">
+                  <span>📊</span> Explore Detailed Diagnostic Evidence
+                </button>
+                <div class="prof-det-btn-row">
+                  <button class="btn-prof-secondary-det" id="btnProfRerunDetection">🔄 Re-run Check</button>
+                  <button class="btn-prof-secondary-det" id="btnProfExportDoctor">📄 Export Doctor PDF</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connected Care Team Card -->
+            <div class="vitals-grid-header">
+              <h4>My Connected Specialists</h4>
+              <button class="btn-edit-vitals-text" id="btnProfBrowseDocs">Browse All</button>
+            </div>
+
+            <div class="care-team-card">
+              <div class="care-team-item">
+                <div class="care-team-doctor">
+                  <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=120&h=120&fit=crop&crop=faces" alt="Dr. Laiba Khan" class="ct-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  <div class="ct-info">
+                    <h5>Dr. Laiba Khan</h5>
+                    <p>Endocrinologist • KMC Peshawar</p>
+                  </div>
+                </div>
+                <button class="btn-ct-book" id="btnProfBookLaiba">Book</button>
+              </div>
+
+              <div class="care-team-item">
+                <div class="care-team-doctor">
+                  <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120&h=120&fit=crop&crop=faces" alt="Dr. Afsheen Sharif" class="ct-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+                  <div class="ct-info">
+                    <h5>Dr. Afsheen Sharif</h5>
+                    <p>Gynecologist • RMI Peshawar</p>
+                  </div>
+                </div>
+                <button class="btn-ct-book" id="btnProfBookAfsheen">Book</button>
+              </div>
+            </div>
+
+            <!-- Health Records Quick Access -->
+            <div class="vitals-grid-header">
+              <h4>Diagnostic Lab & Imaging</h4>
+              <button class="btn-edit-vitals-text" id="btnProfAddLab">+ Add Test</button>
+            </div>
+
+            <div class="vcard full-width" style="margin-bottom: 16px;">
+              <div class="vcard-top">
+                <span class="vcard-label"><span class="vcard-icon">🧪</span> Active Biomarkers</span>
+                <span class="vcard-pill green">4 Verified</span>
+              </div>
+              <div style="font-size: 12px; color: #475569; line-height: 1.6; margin-top: 4px;">
+                • Total Testosterone: <strong>2.8 nmol/L</strong> (Elevated)<br>
+                • TSH: <strong>2.1 mIU/L</strong> (Normal thyroid function)<br>
+                • Serum Prolactin: <strong>18.0 ng/mL</strong> (Normal range)<br>
+                • Free Androgen Index (FAI): <strong>11.7</strong> (High androgenic activity)
+              </div>
+            </div>
+
+            <!-- Settings & Preferences -->
+            <div class="vitals-grid-header">
+              <h4>Preferences & Security</h4>
+            </div>
+
+            <div class="profile-settings-card">
+              <div class="settings-row">
+                <span>Daily Symptom & Check-in Reminder</span>
+                <label class="settings-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="settings-row">
+                <span>Period & Ovulation Forecast Alerts</span>
+                <label class="settings-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="settings-row">
+                <span>Apple Health / Google Fit Sync</span>
+                <label class="settings-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="settings-row">
+                <span>Local Data Shield & HIPAA Encryption</span>
+                <span style="font-size: 11px; font-weight: 700; color: #059669; background: #ECFDF5; padding: 2px 8px; border-radius: 8px;">Active ✓</span>
+              </div>
+              <button class="btn-logout-pill" id="btnLogoutProfile">Log Out / Switch Account</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 18. MAIN VIEW 6: DEDICATED DETECTION RESULT SCREEN ================= -->
+        <section class="screen-view" id="view-detection">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="detectionBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Your CysterCare Detection</h3>
+              <p>Layer 2 Clinical Diagnostic Assessment</p>
+            </div>
+            <button class="icon-btn" id="exportDetectionBtn" title="Export Clinical Report">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="screen-scrollable-body" id="detectionContentArea">
+            <div class="detection-hero-card" id="detectionHeroCard">
+              <div class="status-top-row">
+                <span class="detection-status-pill" id="detStatusPill">PCOS/PMOS pattern detected</span>
+                <span class="confidence-tag" id="detConfidenceTag">High confidence</span>
+              </div>
+              <h3 class="detection-headline" id="detHeadline">Three major indicators were identified from the information you provided.</h3>
+              <div class="detection-stage-indicator" id="detStageTag">Enhanced Detection (Stage 2)</div>
+            </div>
+
+            <div class="result-section">
+              <h4 class="section-title">What CysterCare found</h4>
+              
+              <div class="found-item-card">
+                <div class="found-icon cycle">🔄</div>
+                <div class="found-details">
+                  <h5>Cycle pattern</h5>
+                  <p id="detCycleFoundText">Your cycles average approximately 49 days, indicating delayed ovulation.</p>
+                </div>
+              </div>
+
+              <div class="found-item-card">
+                <div class="found-icon androgen">✨</div>
+                <div class="found-details">
+                  <h5>Androgen-related symptoms</h5>
+                  <p id="detAndrogenFoundText">You reported persistent facial hair growth (mFG: 8) and hormonal acne.</p>
+                </div>
+              </div>
+
+              <div class="found-item-card">
+                <div class="found-icon lab">🧪</div>
+                <div class="found-details">
+                  <h5>Hormone results</h5>
+                  <p id="detHormoneFoundText">Your entered testosterone of 2.8 nmol/L was entered above the reference range (max: 1.8 nmol/L).</p>
+                </div>
+              </div>
+
+              <div class="found-item-card" id="detUltrasoundCard">
+                <div class="found-icon ultrasound">🩺</div>
+                <div class="found-details">
+                  <h5>Pelvic ultrasound findings</h5>
+                  <p id="detUltrasoundFoundText">No ultrasound yet uploaded. Adding imaging or AMH can elevate your detection to Comprehensive.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-section">
+              <h4 class="section-title">Why these matter</h4>
+              <p class="section-subtext">Clinical consensus requires meeting 2 out of 3 core dimensions while excluding mimicking conditions.</p>
+
+              <div class="dimension-matrix-card">
+                <div class="dimension-row">
+                  <div class="dimension-name">
+                    <span>Ovulation</span>
+                    <small>Regularity & frequency</small>
+                  </div>
+                  <div class="dimension-status" id="dimOvulationStatus">
+                    <span class="status-dot green">●</span> Detected
+                  </div>
+                </div>
+
+                <div class="dimension-row">
+                  <div class="dimension-name">
+                    <span>Androgen activity</span>
+                    <small>Clinical & biochemical</small>
+                  </div>
+                  <div class="dimension-status" id="dimAndrogenStatus">
+                    <span class="status-dot green">●</span> Detected
+                  </div>
+                </div>
+
+                <div class="dimension-row">
+                  <div class="dimension-name">
+                    <span>Ovarian morphology</span>
+                    <small>Ultrasound or AMH</small>
+                  </div>
+                  <div class="dimension-status" id="dimMorphologyStatus">
+                    <span class="status-dot gray">○</span> No information yet
+                  </div>
+                </div>
+
+                <div class="dimension-row">
+                  <div class="dimension-name">
+                    <span>Alternative causes</span>
+                    <small>Differential diagnosis exclusions</small>
+                  </div>
+                  <div class="dimension-status" id="dimDifferentialStatus">
+                    <span class="status-dot amber">◐</span> Some still need checking
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="explainability-box">
+              <button class="btn-explain-toggle" id="toggleExplainBtn">
+                <div class="btn-explain-label">
+                  <span class="sparkle">✦</span>
+                  <strong>Why did CysterCare detect this?</strong>
+                </div>
+                <span class="chevron-ico" id="explainChevron">▼</span>
+              </button>
+              
+              <div class="explain-drawer-content" id="explainDrawerContent">
+                <p class="explain-intro" id="explainSummaryText">
+                  CysterCare identified a PCOS/PMOS pattern because several independent pieces of information point in the same direction:
+                </p>
+                <div class="signals-list" id="explainSignalsList"></div>
+                <div class="differential-checklist-card">
+                  <h6>Clinical Differential Checklist:</h6>
+                  <ul class="diff-list" id="differentialChecklistUl">
+                    <li><span class="check-icon green">✓</span> PCOS/PMOS pattern detected with high model confidence</li>
+                    <li><span class="check-icon amber">○</span> Thyroid condition (TSH) not yet ruled out</li>
+                    <li><span class="check-icon amber">○</span> Prolactin abnormality not yet ruled out</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="improve-detection-card">
+              <div class="improve-header">
+                <span class="improve-ico">🚀</span>
+                <div>
+                  <h5>Improve detection</h5>
+                  <p>Adding blood tests or ultrasound results gives CysterCare higher clinical precision.</p>
+                </div>
+              </div>
+              <button class="btn-add-health-results" id="openLabUploadBtn">
+                <span>+</span> Add health results
+              </button>
+            </div>
+
+            <div class="action-buttons-group">
+              <button class="btn-primary-purple" id="btnBuildCarePlan">Build my care plan</button>
+              <button class="btn-outline-purple" id="btnPrepDoctor">Prepare for doctor visit</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 16. MAIN VIEW 6: DOCTOR VISIT STATS (Chat Page-2.pdf) ================= -->
+        <section class="screen-view" id="view-doctor-prep">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="doctorBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Doctor Visit Preparation</h3>
+              <p>Send stats to Dr. Afshin Shareef</p>
+            </div>
+            <button class="icon-btn" id="printDoctorSummaryBtn" title="Print/Export Summary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+            </button>
+          </div>
+
+          <div class="screen-scrollable-body" id="doctorPrepArea">
+            <div class="doctor-banner-card">
+              <div class="doctor-badge">
+                <span class="doc-icon">🩺</span>
+                <div>
+                  <strong>Dr. Afshin Shareef</strong>
+                  <p>OB/GYN & Reproductive Endocrinology</p>
+                </div>
+              </div>
+              <p class="doc-note">Your body's notes from 6 months. Pick what to send to your doctor for your next consultation.</p>
+            </div>
+
+            <div class="longitudinal-chart-card">
+              <div class="chart-header-row">
+                <div class="chart-title">
+                  <span class="chart-pill-dot violet"></span>
+                  <strong>Cycle Length (Days)</strong>
+                </div>
+                <span class="chart-trend-tag">62d → 32d</span>
+              </div>
+              <div class="chart-body-wrapper">
+                <div class="y-labels"><span>100</span><span>80</span><span>60</span><span>40</span><span>20</span><span>0</span></div>
+                <div class="bars-container" id="docCycleBars">
+                  <div class="bar-unit"><div class="track"><div class="fill" style="height: 62%;"></div></div><span>1</span></div>
+                  <div class="bar-unit"><div class="track"><div class="fill" style="height: 54%;"></div></div><span>2</span></div>
+                  <div class="bar-unit"><div class="track"><div class="fill" style="height: 48%;"></div></div><span>3</span></div>
+                  <div class="bar-unit"><div class="track"><div class="fill" style="height: 41%;"></div></div><span>4</span></div>
+                  <div class="bar-unit"><div class="track"><div class="fill" style="height: 35%;"></div></div><span>5</span></div>
+                  <div class="bar-unit highlight"><div class="track"><div class="fill" style="height: 32%;"></div></div><span>6</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="longitudinal-chart-card">
+              <div class="chart-header-row">
+                <div class="chart-title">
+                  <span class="chart-pill-dot pink"></span>
+                  <strong>Weight Progression (kg)</strong>
+                </div>
+                <span class="chart-trend-tag pink">-3.4 kg</span>
+              </div>
+              <div class="weight-chart-visual">
+                <svg viewBox="0 0 300 90" class="curve-svg">
+                  <defs>
+                    <linearGradient id="pinkGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#FF6B8B" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#FF6B8B" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 10,25 Q 60,20 110,32 T 210,48 T 290,56 L 290,90 L 10,90 Z" fill="url(#pinkGrad)"/>
+                  <path d="M 10,25 Q 60,20 110,32 T 210,48 T 290,56" fill="none" stroke="#FF6B8B" stroke-width="2.5"/>
+                  <circle cx="10" cy="25" r="4" fill="#FFFFFF" stroke="#FF6B8B" stroke-width="2"/>
+                  <circle cx="70" cy="22" r="4" fill="#FFFFFF" stroke="#FF6B8B" stroke-width="2"/>
+                  <circle cx="125" cy="35" r="4" fill="#FFFFFF" stroke="#FF6B8B" stroke-width="2"/>
+                  <circle cx="180" cy="42" r="4" fill="#FFFFFF" stroke="#FF6B8B" stroke-width="2"/>
+                  <circle cx="235" cy="51" r="4" fill="#FFFFFF" stroke="#FF6B8B" stroke-width="2"/>
+                  <circle cx="290" cy="56" r="4" fill="#FFFFFF" stroke="#FF6B8B" stroke-width="2"/>
+                </svg>
+                <div class="x-labels-row">
+                  <span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="clinical-doc-summary-card" id="docPrintableCard">
+              <div class="summary-top-header">
+                <h5>CysterCare Diagnostic Clinical Brief</h5>
+                <span class="date-badge">Sep 2026</span>
+              </div>
+              <div class="doc-summary-grid">
+                <div class="doc-cell"><span class="label">Patient Name:</span><strong id="docBriefPatientName">Sarah (Age: 27)</strong></div>
+                <div class="doc-cell"><span class="label">Diagnostic Pattern:</span><strong class="text-violet">Likely PCOS/PMOS</strong></div>
+                <div class="doc-cell"><span class="label">Primary Phenotype:</span><strong>Phenotype B (Non-PCOM Classic)</strong></div>
+                <div class="doc-cell"><span class="label">Model Confidence:</span><strong>0.98 (Calibrated Very High)</strong></div>
+              </div>
+            </div>
+
+            <div class="action-buttons-group mb-xl">
+              <button class="btn-primary-purple" id="btnSendToDoctor">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Send to Dr. Afshin Shareef
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 17. MAIN VIEW 7: CARE PLAN ================= -->
+        <section class="screen-view" id="view-care-plan">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="carePlanBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Your PCOS/PMOS Care Plan</h3>
+              <p id="planPhenotypeSubtitle">Personalized for Phenotype B</p>
+            </div>
+          </div>
+
+          <div class="screen-scrollable-body">
+            <div class="care-hero-card">
+              <div class="care-profile-tag">Dominant Drivers</div>
+              <h4>Delayed Ovulation + Androgen Activity</h4>
+              <p>Your plan targets insulin sensitization to lower ovarian androgen synthesis and encourage regular follicular maturation.</p>
+            </div>
+
+            <div class="plan-pillars-list">
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <span class="pillar-ico">🌙</span>
+                  <div class="pillar-title">
+                    <h5>1. Cycle Regulation & Ovulation</h5>
+                    <span class="pillar-tag">Priority</span>
+                  </div>
+                </div>
+                <div class="pillar-body">
+                  <p>• <strong>Inositol Protocol:</strong> Discuss 40:1 Myo-inositol / D-chiro-inositol (2,000 mg twice daily) with your doctor.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <span class="pillar-ico">💆‍♀️</span>
+                  <div class="pillar-title">
+                    <h5>2. Acne & Facial Hair Management</h5>
+                    <span class="pillar-tag">Symptom</span>
+                  </div>
+                </div>
+                <div class="pillar-body">
+                  <p>• <strong>Spearmint Tea:</strong> 2 cups daily shows mild anti-androgenic effects in clinical trials.</p>
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-header">
+                  <span class="pillar-ico">🥑</span>
+                  <div class="pillar-title">
+                    <h5>3. Glucose & Anti-Inflammatory Nutrition</h5>
+                    <span class="pillar-tag">Metabolic</span>
+                  </div>
+                </div>
+                <div class="pillar-body">
+                  <p>• <strong>Protein Anchor:</strong> 25–30g of protein at breakfast prevents insulin surges.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-buttons-group mb-xl">
+              <button class="btn-primary-purple" id="planToDoctorBtn">Review Doctor Summary</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 18. MAIN VIEW 8: VALIDATION & RESEARCH DASHBOARD ================= -->
+        <section class="screen-view" id="view-validation">
+          <div class="screen-header">
+            <button class="nav-back-btn" id="valBackBtn" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="header-title-box">
+              <h3>Research & Validation</h3>
+              <p>≥95% Accuracy Diagnostic Benchmark</p>
+            </div>
+          </div>
+
+          <div class="screen-scrollable-body">
+            <div class="validation-hero-card">
+              <div class="val-metric-large">
+                <span class="val-num" id="valAccuracyLarge">99.6%</span>
+                <span class="val-lbl">Validated Diagnostic Accuracy</span>
+              </div>
+              <div class="val-target-badge">Target ≥95.0% Validated</div>
+              <p class="val-cohort-note">Evaluated on N=1,000 clinically characterized patients with stratified South Asian subcohort.</p>
+            </div>
+
+            <div class="metrics-kpi-grid">
+              <div class="kpi-card">
+                <span class="kpi-label">Sensitivity (Recall)</span>
+                <span class="kpi-value text-green" id="valSensitivity">100.0%</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Specificity</span>
+                <span class="kpi-value text-violet" id="valSpecificity">99.1%</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Pos. Pred. Value (PPV)</span>
+                <span class="kpi-value" id="valPpv">99.3%</span>
+              </div>
+              <div class="kpi-card">
+                <span class="kpi-label">Neg. Pred. Value (NPV)</span>
+                <span class="kpi-value" id="valNpv">100.0%</span>
+              </div>
+            </div>
+
+            <div class="val-card">
+              <h5 class="val-card-title">Confusion Matrix (N=1,000 Benchmark)</h5>
+              <div class="matrix-table">
+                <div class="matrix-cell header-col"></div>
+                <div class="matrix-cell header-col"><strong>Actual PCOS/PMOS</strong></div>
+                <div class="matrix-cell header-col"><strong>Actual Control</strong></div>
+                <div class="matrix-cell row-header"><strong>Pred. PCOS/PMOS</strong></div>
+                <div class="matrix-cell tp"><span class="matrix-count" id="cmTp">540</span><span class="matrix-desc">TP</span></div>
+                <div class="matrix-cell fp"><span class="matrix-count" id="cmFp">4</span><span class="matrix-desc">FP</span></div>
+                <div class="matrix-cell row-header"><strong>Pred. Control</strong></div>
+                <div class="matrix-cell fn"><span class="matrix-count" id="cmFn">0</span><span class="matrix-desc">FN</span></div>
+                <div class="matrix-cell tn"><span class="matrix-count" id="cmTn">456</span><span class="matrix-desc">TN</span></div>
+              </div>
+            </div>
+
+            <div class="val-card mb-xl">
+              <h5 class="val-card-title">Population Subgroup Validation</h5>
+              <div class="subgroup-table">
+                <div class="subgroup-row highlight">
+                  <span><strong>South Asian Cohort</strong></span>
+                  <span>N=350</span>
+                  <strong class="text-green" id="subSouthAsianAcc">100.0%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div> <!-- /app-viewport -->
+
+      <!-- Bottom Navigation Dock - shown on main screens -->
+      <nav class="app-dock-nav" id="appDockNav" style="display: none;">
+        <button class="dock-tab active" data-target="view-home">
+          <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span class="dock-label">Home</span>
+        </button>
+
+        <button class="dock-tab" data-target="view-chat">
+          <div class="dock-chat-icon">
+            <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="bot-wink"></span>
+          </div>
+          <span class="dock-label">AI Chat</span>
+        </button>
+
+        <button class="dock-tab" data-target="view-specialists">
+          <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+            <path d="M7 12c1.5-2 3.5-3 5-3s3.5 1 5 3"></path>
+          </svg>
+          <span class="dock-label">Specialists</span>
+        </button>
+
+        <button class="dock-tab" data-target="view-community">
+          <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span class="dock-label">Community</span>
+        </button>
+
+        <button class="dock-tab" data-target="view-profile">
+          <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path>
+          </svg>
+          <span class="dock-label">Profile</span>
+        </button>
+      </nav>
+
+      <!-- Home Indicator -->
+      <div class="ios-home-indicator"></div>
+
+    </main> <!-- /iphone-frame -->
+
+  </div> <!-- /device-wrapper -->
+
+  <!-- ================= MODAL: LAB & ULTRASOUND UPLOADER / OCR ================= -->
+  <div class="modal-backdrop" id="labModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h4>Add Lab & Imaging Results</h4>
+        <button class="modal-close" id="closeLabModalBtn">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" id="tabLabReport">Blood Lab Report</button>
+        <button class="modal-tab-btn" id="tabUltrasound">Ultrasound Report</button>
+      </div>
+
+      <div class="modal-body" id="labModalBody">
+        <div class="tab-pane active" id="paneLabReport">
+          <div class="upload-dropzone" id="dropzoneLab">
+            <span class="upload-ico">📄</span>
+            <p><strong>Upload or Photograph Laboratory Report</strong></p>
+            <small>Extracts values with exact lab-specific reference ranges</small>
+            <button class="btn-sample-lab" id="btnSimulateOcr">Simulate LabCorp Report Intake</button>
+          </div>
+
+          <div class="extracted-table-wrapper" id="extractedTableWrapper" style="display: none;">
+            <div class="table-notice">
+              <span>⚠️</span> Please verify extracted values and laboratory ranges before confirming:
+            </div>
+            
+            <div class="extracted-item-row">
+              <div class="item-name">
+                <strong>Total Testosterone</strong>
+                <small>Ref: 0.5 – 1.8 nmol/L</small>
+              </div>
+              <div class="item-input">
+                <input type="number" step="0.1" id="inputTestosterone" value="2.8" />
+                <span>nmol/L</span>
+              </div>
+            </div>
+
+            <div class="extracted-item-row">
+              <div class="item-name">
+                <strong>SHBG</strong>
+                <small>Ref: 26.0 – 110.0 nmol/L</small>
+              </div>
+              <div class="item-input">
+                <input type="number" step="0.1" id="inputShbg" value="24.0" />
+                <span>nmol/L</span>
+              </div>
+            </div>
+
+            <div class="extracted-item-row">
+              <div class="item-name">
+                <strong>TSH (Thyroid)</strong>
+                <small>Ref: 0.45 – 4.5 mIU/L</small>
+              </div>
+              <div class="item-input">
+                <input type="number" step="0.1" id="inputTsh" value="2.1" />
+                <span>mIU/L</span>
+              </div>
+            </div>
+
+            <div class="extracted-item-row">
+              <div class="item-name">
+                <strong>Serum Prolactin</strong>
+                <small>Ref: 4.8 – 23.3 ng/mL</small>
+              </div>
+              <div class="item-input">
+                <input type="number" step="0.1" id="inputProlactin" value="18.0" />
+                <span>ng/mL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="paneUltrasound" style="display: none;">
+          <div class="upload-dropzone" id="dropzoneUltrasound">
+            <span class="upload-ico">🩺</span>
+            <p><strong>Upload Pelvic Ultrasound Report or Images</strong></p>
+            <button class="btn-sample-lab" id="btnSimulateUs">Simulate Sonogram Findings</button>
+          </div>
+
+          <div class="extracted-table-wrapper" id="usExtractedWrapper" style="display: none;">
+            <div class="extracted-item-row">
+              <div class="item-name"><strong>Left Ovary Follicles (AFC)</strong><small>Threshold: ≥20</small></div>
+              <div class="item-input"><input type="number" id="inputAfcLeft" value="23" /><span>follicles</span></div>
+            </div>
+            <div class="extracted-item-row">
+              <div class="item-name"><strong>Left Ovary Volume</strong><small>Threshold: ≥10 mL</small></div>
+              <div class="item-input"><input type="number" step="0.1" id="inputVolLeft" value="11.4" /><span>mL</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btnCancelModal">Cancel</button>
+        <button class="btn-confirm-lab" id="btnConfirmLabResults" disabled>Looks correct — Add to Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: SPECIALIST BOOKING CONFIRMATION ================= -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h4>Schedule Consultation</h4>
+        <button class="modal-close" id="closeBookingModalBtn">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 16px 20px;">
+        <div class="booking-doctor-summary">
+          <div class="bds-avatar-box">
+            <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=120&h=120&fit=crop&crop=faces" id="bookingDoctorImg" alt="Doctor" class="bds-avatar" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23EFF6FF\'/><circle cx=\'50\' cy=\'38\' r=\'18\' fill=\'%233B82F6\'/><path d=\'M22,82 C22,64 36,60 50,60 C64,60 78,64 78,82 Z\' fill=\'%233B82F6\'/></svg>';" />
+          </div>
+          <div>
+            <h4 id="bookingDoctorName" style="margin: 0; font-size: 16px; color: var(--text-dark);">Dr. Laiba Khan</h4>
+            <p id="bookingDoctorSpecialty" style="margin: 2px 0; color: var(--primary-purple); font-weight: 600; font-size: 13px;">Endocrinologist</p>
+            <small id="bookingDoctorHospital" style="color: var(--text-muted);">KMC Peshawar</small>
+          </div>
+        </div>
+
+        <div class="booking-type-toggle">
+          <button class="btn-btype active" id="btnBtypeOnline">🌐 Online Video Consult</button>
+          <button class="btn-btype" id="btnBtypeInPerson">🏥 In-Person Visit</button>
+        </div>
+
+        <div class="booking-field-group">
+          <label class="booking-label">Preferred Date & Time</label>
+          <select class="booking-select" id="selectBookingTime">
+            <option>Tomorrow — 10:30 AM (Available)</option>
+            <option>Tomorrow — 03:00 PM (Available)</option>
+            <option>Thursday — 11:00 AM (Available)</option>
+            <option>Thursday — 04:30 PM (Available)</option>
+          </select>
+        </div>
+
+        <div class="booking-field-group">
+          <label class="booking-label">Attach CysterCare Clinical Report</label>
+          <div class="booking-checkbox-row">
+            <input type="checkbox" id="chkAttachReport" checked />
+            <label for="chkAttachReport">Include 6-month cycle trends & detected PCOS/PMOS profile</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btnCancelBooking">Cancel</button>
+        <button class="btn-primary-purple" id="btnConfirmBooking">Confirm Consultation ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: QUICK EDIT VITALS ================= -->
+  <div class="modal-backdrop" id="vitalsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h4>Update Vitals & Biometrics</h4>
+        <button class="modal-close" id="closeVitalsModalBtn">✕</button>
+      </div>
+      <div class="vitals-modal-body">
+        <div class="vitals-input-row">
+          <label for="editVitalAge">Age</label>
+          <div class="vitals-input-wrap">
+            <input type="number" id="editVitalAge" value="26" min="14" max="65" />
+            <span>years</span>
+          </div>
+        </div>
+        <div class="vitals-input-row">
+          <label for="editVitalWeight">Weight</label>
+          <div class="vitals-input-wrap">
+            <input type="number" step="0.1" id="editVitalWeight" value="75.0" />
+            <span>kg</span>
+          </div>
+        </div>
+        <div class="vitals-input-row">
+          <label for="editVitalHeight">Height</label>
+          <div class="vitals-input-wrap">
+            <input type="number" id="editVitalHeight" value="165" />
+            <span>cm</span>
+          </div>
+        </div>
+        <div class="vitals-input-row">
+          <label for="editVitalCycle">Typical Cycle Length</label>
+          <div class="vitals-input-wrap">
+            <input type="number" id="editVitalCycle" value="49" />
+            <span>days</span>
+          </div>
+        </div>
+        <div class="vitals-input-row">
+          <label for="editVitalPeriods">Periods in Last 12 Months</label>
+          <div class="vitals-input-wrap">
+            <input type="number" id="editVitalPeriods" value="6" />
+            <span>menses</span>
+          </div>
+        </div>
+        <div style="background: #FAF7FF; padding: 10px; border-radius: 12px; margin-top: 10px; font-size: 12px; color: #5B32DB; text-align: center;">
+          Computed BMI: <strong id="modalCalculatedBmi">27.5 kg/m²</strong> (Overweight range)
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btnCancelVitals">Cancel</button>
+        <button class="btn-primary-purple" id="btnSaveVitals">Save & Re-evaluate ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="toast-notification" id="appToast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
