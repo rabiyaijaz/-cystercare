@@ -79,10 +79,12 @@ const extractedTableWrapper = document.getElementById('extractedTableWrapper');
 const usExtractedWrapper = document.getElementById('usExtractedWrapper');
 const btnConfirmLabResults = document.getElementById('btnConfirmLabResults');
 
-// Keep the modal backdrop scoped to the phone frame instead of the page canvas.
+// Keep every modal card and its backdrop scoped to the phone frame.
 const phoneFrame = document.querySelector('.iphone-frame');
-if (labModal && phoneFrame) {
-  phoneFrame.append(labModal);
+if (phoneFrame) {
+  document.querySelectorAll('.modal-backdrop').forEach(modal => {
+    phoneFrame.append(modal);
+  });
 }
 
 // --- Initialization ---
