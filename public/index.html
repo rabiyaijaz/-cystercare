@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#6C35DE">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
   <title>CysterCare - AI Health Assistant for PCOS/PMOS detection and management</title>
   <meta name="title" content="CysterCare - AI Health Assistant for PCOS/PMOS detection and management">
   <meta name="description" content="AI-led PCOS detection and lifelong care. Symptom & cycle tracking, personalized care plans, accessible support in Urdu & Pashto, and verified specialist connections.">
@@ -377,6 +381,10 @@
                 </svg>
                 Continue with Apple
               </button>
+
+              <div class="auth-guest-option">
+                <button type="button" class="btn-guest-explore" id="btnGuestExplore">Explore app as Guest →</button>
+              </div>
             </div>
           </div>
         </section>
@@ -738,6 +746,19 @@
             <div class="predictive-text">
               <h5>Predictive Insight</h5>
               <p>Possible energy dip starting Tuesday. Let's adjust your meal plan with complex carbs and magnesium.</p>
+            </div>
+          </div>
+
+          <!-- Clinical Detection Report Promo Banner -->
+          <div class="detection-report-banner" id="homeDetectionCard" role="button" tabindex="0" title="Open Clinical Detection Report">
+            <div class="drb-left">
+              <span class="drb-pill">🔬 Clinical Detection</span>
+              <h4 class="drb-title">PCOS/PMOS Analysis Ready</h4>
+              <p class="drb-sub">Rotterdam criteria, phenotypic diagnosis & care pathway</p>
+            </div>
+            <div class="drb-action">
+              <span class="drb-btn-text">View Report</span>
+              <span class="drb-arrow">→</span>
             </div>
           </div>
 

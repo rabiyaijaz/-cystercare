@@ -128,6 +128,11 @@ function setupNavigation() {
   document.getElementById('qaLogSymptoms')?.addEventListener('click', () => switchView('view-symptoms'));
   document.getElementById('qaVerifiedDoctors')?.addEventListener('click', () => switchView('view-specialists'));
   document.getElementById('startCheckinBtn')?.addEventListener('click', () => switchView('view-symptoms'));
+  document.getElementById('homeDetectionCard')?.addEventListener('click', () => switchView('view-detection'));
+  document.getElementById('homeBrandLogoBtn')?.addEventListener('click', () => {
+    const homeEl = document.getElementById('view-home');
+    if (homeEl) homeEl.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   document.getElementById('homeUserAvatarBtn')?.addEventListener('click', () => {
     updateProfileDisplay();
     switchView('view-profile');
@@ -136,7 +141,13 @@ function setupNavigation() {
   // Header and screen back buttons
   document.getElementById('chatBackBtn')?.addEventListener('click', () => switchView('view-home'));
   document.getElementById('profileBackBtn')?.addEventListener('click', () => switchView('view-home'));
-  document.getElementById('detectionBackBtn')?.addEventListener('click', () => switchView('view-profile'));
+  document.getElementById('detectionBackBtn')?.addEventListener('click', () => {
+    if (state.previousView && state.previousView !== 'view-detection') {
+      switchView(state.previousView);
+    } else {
+      switchView('view-home');
+    }
+  });
   document.getElementById('carePlanBackBtn')?.addEventListener('click', () => switchView('view-detection'));
   document.getElementById('doctorBackBtn')?.addEventListener('click', () => switchView('view-home'));
   document.getElementById('valBackBtn')?.addEventListener('click', () => switchView('view-home'));
@@ -166,6 +177,9 @@ function setupNavigation() {
 }
 
 function switchView(viewId) {
+  if (state.activeView !== viewId) {
+    state.previousView = state.activeView;
+  }
   state.activeView = viewId;
   const allViews = document.querySelectorAll('.screen-view');
   allViews.forEach(v => {
@@ -198,32 +212,60 @@ function switchView(viewId) {
     }
   });
 
-  // iOS status bar theme
+  // Theme & Status Styling (seamless on mobile)
+  const isPurpleTheme = (viewId === 'screen-splash' || viewId === 'screen-welcome');
   const statusBar = document.getElementById('iosStatusBar');
   const iphoneFrame = document.getElementById('iphoneFrame');
   if (statusBar) {
-    if (viewId === 'screen-splash' || viewId === 'screen-welcome') {
-      statusBar.classList.add('white-mode');
-      statusBar.classList.add('splash-mode');
+    if (isPurpleTheme) {
+      statusBar.classList.add('white-mode', 'splash-mode');
       iphoneFrame?.classList.add('purple-theme');
     } else {
-      statusBar.classList.remove('white-mode');
-      statusBar.classList.remove('splash-mode');
+      statusBar.classList.remove('white-mode', 'splash-mode');
       iphoneFrame?.classList.remove('purple-theme');
     }
   }
 
-  // Scroll to top of viewport
+  // Mobile Web Theme Color & Body Background Synchronization
+  const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+  if (metaThemeColor) {
+    metaThemeColor.setAttribute('content', isPurpleTheme ? '#6C35DE' : '#FAF7FB');
+  }
+  if (window.innerWidth <= 768) {
+    document.body.style.background = isPurpleTheme ? '#6C35DE' : '#FAF7FB';
+  }
+
+  // Reset scroll position on view switch
+  const activeEl = document.getElementById(viewId);
+  if (activeEl) {
+    activeEl.scrollTop = 0;
+    const internalScroll = activeEl.querySelector('.screen-scrollable-body, .onboarding-content-body, .chat-scroll-area');
+    if (internalScroll) internalScroll.scrollTop = 0;
+  }
   const viewport = document.getElementById('appViewport');
   if (viewport) viewport.scrollTop = 0;
 }
 
 // ================= ONBOARDING & AUTH FLOW =================
 function setupOnboardingAuthFlow() {
-  // 1. Splash Screen
-  document.getElementById('splashTouchTarget')?.addEventListener('click', () => {
+  // 1. Splash Screen - Tap ANYWHERE to advance seamlessly
+  const splashScreen = document.getElementById('screen-splash');
+  const splashTouchTarget = document.getElementById('splashTouchTarget');
+  let splashNavigated = false;
+
+  function advanceFromSplash(e) {
+    if (splashNavigated) return;
+    splashNavigated = true;
+    if (e && e.type === 'touchend') {
+      e.preventDefault();
+    }
     switchView('screen-welcome');
-  });
+    setTimeout(() => { splashNavigated = false; }, 600);
+  }
+
+  splashScreen?.addEventListener('click', advanceFromSplash);
+  splashScreen?.addEventListener('touchend', advanceFromSplash, { passive: false });
+  splashTouchTarget?.addEventListener('click', advanceFromSplash);
 
   // 2. Welcome Screen
   document.getElementById('btnWelcomeGetStarted')?.addEventListener('click', () => {
@@ -275,6 +317,9 @@ function setupOnboardingAuthFlow() {
   });
   document.getElementById('btnContinueApple')?.addEventListener('click', () => {
     switchView('screen-personalize-name-dob');
+  });
+  document.getElementById('btnGuestExplore')?.addEventListener('click', () => {
+    switchView('view-home');
   });
 
   // 7. Auth: Enter Your Email

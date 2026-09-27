@@ -4923,3 +4923,377 @@ body {
   color: #64748B;
   width: 32px;
 }
+
+/* ==========================================================================
+   DIRECT DETECTION REPORT BANNER & GUEST EXPLORE STYLES
+   ========================================================================== */
+.detection-report-banner {
+  background: linear-gradient(135deg, #FAF7FF 0%, #F1EAFF 100%);
+  border: 1.5px solid #D6CAFA;
+  border-radius: 20px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(112, 71, 235, 0.08);
+}
+
+.detection-report-banner:hover {
+  border-color: var(--primary-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(112, 71, 235, 0.16);
+}
+
+.detection-report-banner:active {
+  transform: scale(0.99);
+}
+
+.drb-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.drb-pill {
+  display: inline-block;
+  background: var(--primary-purple);
+  color: #FFFFFF;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.drb-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #1C1924;
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+
+.drb-sub {
+  font-size: 12px;
+  color: var(--text-body);
+  line-height: 1.35;
+}
+
+.drb-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  color: var(--primary-purple);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.drb-btn-text {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.drb-arrow {
+  font-size: 16px;
+  font-weight: 800;
+  transition: transform 0.2s ease;
+}
+
+.detection-report-banner:hover .drb-arrow {
+  transform: translateX(3px);
+}
+
+.btn-guest-explore {
+  background: none;
+  border: none;
+  color: #7047EB;
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 8px 12px;
+  transition: opacity 0.2s;
+}
+
+.btn-guest-explore:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   MOBILE NATIVE EXPERIENCE & FULL RESPONSIVENESS (PHONES <= 768px)
+   Removes device frame mockup & prototype selector on real mobile viewports.
+   Delivers 100% full-screen, edge-to-edge, native mobile app experience.
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: var(--bg-app) !important;
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+
+  /* Completely remove the desktop prototype bar & controls on phone */
+  .prototype-bar {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    z-index: -1 !important;
+  }
+
+  /* Full screen device wrapper */
+  .device-wrapper,
+  .device-wrapper.full-view {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Unbox the phone: No mockup bezels, no outer shadows, no inner frame borders */
+  .iphone-frame,
+  .device-wrapper.full-view .iphone-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1 1 auto !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* Real phone already has hardware status bar and gesture home bar */
+  .ios-status-bar {
+    display: none !important;
+    height: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .ios-home-indicator {
+    display: none !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* App Viewport fills available screen height without cutoff */
+  .app-viewport {
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  .screen-view {
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1 1 auto !important;
+    position: relative !important;
+  }
+
+  /* Top Navigation Bars - Hardware Safe Area Inset Support */
+  .onboarding-top-bar {
+    padding-top: max(14px, env(safe-area-inset-top, 14px)) !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .app-header {
+    padding-top: max(14px, env(safe-area-inset-top, 14px)) !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .chat-header {
+    padding-top: max(14px, env(safe-area-inset-top, 14px)) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .screen-header {
+    padding-top: max(14px, env(safe-area-inset-top, 14px)) !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* Welcome Screen Layout Adaptation */
+  .welcome-screen-inner {
+    padding-top: max(32px, calc(16px + env(safe-area-inset-top, 0px))) !important;
+    padding-bottom: max(28px, calc(16px + env(safe-area-inset-bottom, 0px))) !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    box-sizing: border-box !important;
+  }
+
+  .welcome-top-logo {
+    padding-top: 16px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .welcome-main-logo {
+    width: 200px !important;
+    max-width: 68% !important;
+  }
+
+  .welcome-title-large {
+    font-size: 28px !important;
+  }
+
+  .welcome-sub-text {
+    font-size: 14.5px !important;
+  }
+
+  /* Splash Screen */
+  .splash-center-content {
+    cursor: pointer;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .splash-main-logo {
+    width: 210px !important;
+    max-width: 72% !important;
+  }
+
+  /* Onboarding Content Bodies - Smooth Touch Scrolling */
+  .onboarding-content-body {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    padding-bottom: max(24px, calc(12px + env(safe-area-inset-bottom, 0px))) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .onboarding-main-title {
+    font-size: 22px !important;
+  }
+
+  .onboarding-desc-text {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .onboarding-2x2-grid {
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .onb-category-card {
+    padding: 18px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .onb-card-icon {
+    width: 38px !important;
+    height: 38px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .onb-card-title {
+    font-size: 13.5px !important;
+  }
+
+  .onb-card-sub {
+    font-size: 11px !important;
+  }
+
+  /* Bottom Dock Navigation Bar */
+  .app-dock-nav {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 6px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px !important;
+    box-sizing: border-box !important;
+    z-index: 90 !important;
+  }
+
+  /* Scrollable Screens Bottom Clearance Above Dock */
+  #view-home {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #view-chat {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .chat-scroll-area {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .screen-scrollable-body {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px)) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Consistent Touch-Friendly Button Sizing on Mobile */
+  .btn-primary-purple,
+  .btn-dark-pill,
+  .btn-social-outline {
+    width: 100% !important;
+    min-height: 50px !important;
+    box-sizing: border-box !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Prevent automatic iOS Safari zooming on form inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Modals on Mobile */
+  .modal-backdrop {
+    z-index: 200 !important;
+  }
+
+  .modal-card {
+    max-height: 90% !important;
+    border-radius: 24px 24px 0 0 !important;
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+  }
+}
