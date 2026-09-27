@@ -3219,14 +3219,19 @@ body {
 }
 
 .symptom-category-group {
-  margin-bottom: 16px;
+  background: #FFFFFF;
+  border: 1.5px solid #ECE7F5;
+  border-radius: 20px;
+  padding: 16px 16px 18px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 10px rgba(112, 71, 235, 0.03);
 }
 
 .symptom-category-group h6 {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 8px;
+  color: #1C1924;
+  margin-bottom: 12px;
 }
 
 .chips-flex {
@@ -3236,14 +3241,34 @@ body {
 }
 
 .sym-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   background: #FFFFFF;
-  border: 1px solid var(--card-border);
+  border: 1px solid #E5E0F2;
   border-radius: var(--radius-full);
   padding: 8px 14px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-body);
+  color: #374151;
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.sym-pill-ico {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sym-pill:hover {
+  border-color: #D6CAFA;
+  background: #FAF8FE;
 }
 
 .sym-pill.selected {
@@ -3251,35 +3276,127 @@ body {
   border-color: #7047EB;
   color: #7047EB;
   font-weight: 600;
+  box-shadow: 0 2px 8px rgba(112, 71, 235, 0.12);
 }
 
-.symptom-card-input {
+.sym-pill.selected .sym-pill-ico {
+  transform: scale(1.05);
+}
+
+/* Sample Action Cards for Weight, Note, Water */
+.sym-action-card {
   background: #FFFFFF;
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-  margin-bottom: 10px;
-  box-shadow: var(--card-shadow);
-}
-
-.sci-header {
+  border: 1.5px solid #ECE7F5;
+  border-radius: 20px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 13px;
-  font-weight: 600;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(112, 71, 235, 0.03);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sym-action-card:hover {
+  border-color: #D6CAFA;
+  transform: translateY(-1px);
+}
+
+.sym-action-card:active {
+  transform: scale(0.99);
+}
+
+.sac-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sac-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #F4EFFF;
+  color: #7047EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sac-info strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1C1924;
+  margin-bottom: 2px;
+}
+
+.sac-info p {
+  font-size: 12px;
   color: var(--text-muted);
-  margin-bottom: 4px;
+  margin: 0;
 }
 
-.sci-value {
-  font-size: 15px;
-  color: var(--text-dark);
+.sac-add-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #F3F1F6;
+  border: none;
+  color: #4B5563;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.sci-text {
-  font-size: 13px;
-  color: var(--text-body);
+.sac-add-btn:hover {
+  background: #7047EB;
+  color: #FFFFFF;
+}
+
+/* Custom symptom input bar */
+.sym-custom-input-bar {
+  background: #F3F1F6;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  padding: 4px 6px 4px 16px;
+  margin: 16px 0 14px 0;
+  height: 48px;
+}
+
+.sym-custom-input-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13.5px;
+  color: #1C1924;
+}
+
+.btn-send-custom-sym {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #7047EB;
+  border: none;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.btn-send-custom-sym:active {
+  transform: scale(0.92);
 }
 
 /* ================= 9. DOCK NAV ================= */

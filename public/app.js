@@ -668,6 +668,78 @@ function setupSymptomsControls() {
       cat.style.display = catMatch ? '' : 'none';
     });
   });
+
+  // Weight action card
+  const weightCard = document.getElementById('cardLogWeight');
+  const weightDisplay = document.getElementById('symWeightDisplay');
+  weightCard?.addEventListener('click', () => {
+    const currentWeight = state.weight || 65;
+    const input = prompt('Enter your weight in kg:', currentWeight);
+    if (input !== null && input.trim() !== '') {
+      const val = parseFloat(input);
+      if (!isNaN(val) && val > 20 && val < 300) {
+        state.weight = val;
+        if (weightDisplay) weightDisplay.textContent = `${val} kg logged`;
+      }
+    }
+  });
+
+  // Note action card
+  const noteCard = document.getElementById('cardLogNote');
+  const noteDisplay = document.getElementById('symNoteDisplay');
+  noteCard?.addEventListener('click', () => {
+    const input = prompt('Add a note about how you are feeling:', state.dailyNote || '');
+    if (input !== null) {
+      state.dailyNote = input.trim();
+      if (noteDisplay) {
+        noteDisplay.textContent = state.dailyNote ? (state.dailyNote.length > 28 ? state.dailyNote.substring(0, 25) + '…' : state.dailyNote) : 'Log your Note';
+      }
+    }
+  });
+
+  // Water action card
+  const waterCard = document.getElementById('cardLogWater');
+  const waterDisplay = document.getElementById('symWaterDisplay');
+  state.waterLogged = state.waterLogged || 0;
+  waterCard?.addEventListener('click', () => {
+    state.waterLogged += 250;
+    if (waterDisplay) {
+      waterDisplay.textContent = `${state.waterLogged} ml logged today (+250ml)`;
+    }
+  });
+
+  // Custom symptom input
+  const customInput = document.getElementById('inputCustomSymptom');
+  const addCustomBtn = document.getElementById('btnAddCustomSym');
+  const handleAddCustom = () => {
+    const text = customInput?.value.trim();
+    if (!text) return;
+    const groups = document.querySelectorAll('.symptom-category-group');
+    const targetGroup = groups[groups.length - 1]?.querySelector('.chips-flex');
+    if (targetGroup) {
+      const pill = document.createElement('button');
+      pill.className = 'sym-pill selected';
+      pill.innerHTML = `
+        <svg class="sym-pill-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 8v8M8 12h8"></path>
+        </svg>
+        <span>${escapeHtml(text)}</span>
+      `;
+      pill.addEventListener('click', () => {
+        pill.classList.toggle('selected');
+      });
+      targetGroup.appendChild(pill);
+      customInput.value = '';
+    }
+  };
+  addCustomBtn?.addEventListener('click', handleAddCustom);
+  customInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAddCustom();
+    }
+  });
 }
 
 // ================= FIND SPECIALISTS CONTROLS =================
@@ -1494,14 +1566,27 @@ function setupCarePlan() {
   // Symptoms save button
   document.getElementById('btnSaveSymptoms')?.addEventListener('click', () => {
     const btn = document.getElementById('btnSaveSymptoms');
+    const selectedPills = Array.from(document.querySelectorAll('.sym-pill.selected span')).map(s => s.textContent.trim());
+    state.loggedSymptoms = selectedPills;
+
+    // Update daily checkin card on Home
+    const checkinText = document.querySelector('.checkin-text p');
+    const startCheckinBtn = document.getElementById('startCheckinBtn');
+    if (checkinText && selectedPills.length > 0) {
+      checkinText.textContent = `${selectedPills.length} symptom${selectedPills.length > 1 ? 's' : ''} logged today`;
+    }
+    if (startCheckinBtn) {
+      startCheckinBtn.textContent = 'Updated ✓';
+    }
+
     btn.textContent = 'Saving Symptoms… ✓';
     setTimeout(() => {
       btn.textContent = 'Saved to Daily Log';
       setTimeout(() => {
-        btn.textContent = 'Save Symptoms';
+        btn.textContent = 'Save';
         switchView('view-home');
-      }, 1000);
-    }, 600);
+      }, 700);
+    }, 400);
   });
 }
 
