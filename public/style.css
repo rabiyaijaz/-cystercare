@@ -5045,11 +5045,11 @@ body {
    DIRECT DETECTION REPORT BANNER & GUEST EXPLORE STYLES
    ========================================================================== */
 .detection-report-banner {
+  margin: 4px 20px 16px 20px;
   background: linear-gradient(135deg, #FAF7FF 0%, #F1EAFF 100%);
   border: 1.5px solid #D6CAFA;
   border-radius: 20px;
   padding: 16px 18px;
-  margin-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
